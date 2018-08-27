@@ -1,5 +1,10 @@
+clear			# clear memory
+set verbose off	# avoid printing commands
+
+# Define a string variable for the URL
+string url = "https://scm.darnold.org/atecon/gretl_aer/raw/master"
 # Load the monthly series
-open /home/at/UHHDisk/AUS_Econ_Review_GRETL/data_unrate.xls --rowoffset=10
+open "@url/data_unrate.xls" --rowoffset=10 --preserve
 # Define the data structure
 setobs 12 1948:01 --time-series
 # Transform the monthly series to quarterly
@@ -7,7 +12,7 @@ dataset compact 4
 # Set the sample in line with the series being appended
 smpl 1948:1 2018:2
 # Append the real GDP series
-append /home/at/UHHDisk/AUS_Econ_Review_GRETL/data_gdp.xls --rowoffset=10
+append "@url/data_gdp.xls" --rowoffset=10
 # Drop the series 'observation_date'
 delete observation_date
 # Store the two time-series in native Gretl data format (*.gdt)
@@ -19,6 +24,7 @@ open "data_project.gdt"
 list L = UNRATE GDPC1
 print L --byobs
 summary L
+
 # Summary for L using only data between 1980Q1 and 2007Q4
 smpl 1980:1 2007:4
 summary L
