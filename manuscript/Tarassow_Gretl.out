@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Econometric Software and Gretl}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The 'Market' of econometrics software}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Gretl and Hansl}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Getting Started in Gretl}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Loading and Appending Data}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Basic Commands}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Plotting}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Let's estimate a dynamic time-series model}{}% 9
+\BOOKMARK [1][-]{section.5}{Working with matrices}{}% 10
+\BOOKMARK [1][-]{section.6}{Summary}{}% 11
+\BOOKMARK [1][-]{section.6}{REFERENCES}{}% 12
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 13
+\BOOKMARK [2][-]{subsection.A.1}{Further Resources}{appendix.A}% 14
+\BOOKMARK [2][-]{subsection.A.2}{Data Preparation and Cleaning Process}{appendix.A}% 15
+\BOOKMARK [2][-]{subsection.A.3}{Econometric Models}{appendix.A}% 16
+\BOOKMARK [2][-]{subsection.A.4}{Logical Operators}{appendix.A}% 17
+\BOOKMARK [2][-]{subsection.A.5}{if-conditions}{appendix.A}% 18
+\BOOKMARK [2][-]{subsection.A.6}{Loops}{appendix.A}% 19
+\BOOKMARK [2][-]{subsection.A.7}{Functions}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.8}{Communication with other software packages}{appendix.A}% 21

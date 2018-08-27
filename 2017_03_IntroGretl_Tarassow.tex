@@ -1,0 +1,569 @@
+%\documentclass[dvips]{beamer}
+%\documentclass[10pt,xcolor=dvipsnames,mathserif]{beamer} % use option handout for handout
+\documentclass{beamer}[11pt]
+%\documentclass[handout]{beamer} %Pausen werden nicht berücksichtigt
+%\documentclass[dvips,notes=onlyslideswithnotes]{beamer}
+%\documentclass[pdftex]{beamer} %kompiliert jpeg, ABER LaTex to PDF
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[scaled=1]{helvet}    %% --- Helvetica (Arial)
+%\usepackage{courier} 
+%\usepackage[pdftex]{graphicx}
+%\usepackage{textcomp}
+\usepackage{epstopdf}
+\usepackage{natbib,amssymb,rotating,subfigure}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{breqn}			%Use the dmath-environment to break math eq. automatically!
+\usepackage{makeidx}
+\usepackage{txfonts}
+\usepackage{colortbl}
+\usepackage{moreverb}
+\usepackage{eurosym}
+\usepackage{verbatim}
+%\hypersetup{colorlinks,linkcolor=blue,urlcolor=links}
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{dcolumn,booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+%\usepackage{llncs}
+\usepackage{supertabular}
+%\usepackage{threeparttable}
+\usepackage[flushleft]{threeparttable}
+
+
+\newcommand{\subsize}[1]{\tiny{#1}}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{multirow}
+
+
+%Templates
+% 1
+%\mode<presentation>
+%{
+%  \usetheme{default} % Singapore % Montpellier
+%  \setbeamercovered{transparent}
+%	\setbeamertemplate{footline}[page number]
+%	\setbeamertemplate{navigation symbols}{}
+%}
+\mode<presentation>
+{
+	\usetheme{CambridgeUS}%{default} % Singapore % Montpellier
+	\setbeamercovered{transparent}
+	%\setbeamertemplate{footline}[page number]
+	%\setbeamertemplate{navigation symbols}{}
+	\useinnertheme{rectangles}
+}
+
+%\pgfdeclareimage[height=1cm]{logo}{ecbLogo}
+%\logo{\pgfuseimage{logo}}
+%\usecolortheme{beaverJ}
+
+
+% 2
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{navigation symbols}{} % suppresses all navigation symbols:
+
+% %\usetheme{Madrid}
+%\usetheme{Singapore}
+% %\usecolortheme[named=NavyBlue]{structure}
+%\useinnertheme{rectangles}
+
+
+%%%%%%%%%%%
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+
+
+\definecolor{myRed}{rgb}{0.8,0,0}
+\definecolor{jirkasblue}{rgb}{0.2,0.2,0.7}
+\definecolor{jirkasred}{rgb}{0.9,0,0}
+%\newcommand{\jemph}[1]{{\color{jirkasred}#1}}
+\newcommand{\remph}[1]{{\color{myRed}#1}}
+\newcommand{\rbsymbol}[1]{\jemph{\boldsymbol{#1}}}   % "rb" stands for redbold
+\definecolor{myGray}{rgb}{0.2,0.2,0.2}
+\definecolor{jirkasgray}{rgb}{0.8,0.8,0.8}
+\newcommand{\jemph}[1]{{\color{jirkasgray}#1}}
+%\newcommand{\remph}[1]{{\color{myGray}#1}}
+\newcommand{\gbsymbol}[1]{\jemph{\boldsymbol{#1}}}   % "gb" stands for redbold
+
+
+\title{\textsc{Using Gretl and Hansl for Econometrics}}
+\subtitle{}
+
+\author[Tarassow] % (optional, for multiple authors)
+{Artur Tarassow\inst{1}\\
+	\textsc{\small }
+	}
+ 
+\institute[] % (optional)
+{
+  \inst{1}%
+  Faculty of Economics and Social Sciences\\
+  University of Hamburg
+}
+ 
+\date[] % (optional)
+{Melbourne, 23.03.2017}
+
+
+%***********************************************************************************************
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents%[pausesections]
+\end{frame}
+
+
+\section{Aims and general character}
+
+
+\begin{frame}{Aims and general character}
+	
+	Main uses of econometric quantification:\footnote{The content of this presentation relies heavily on the joint work of Allin Cottrell (Wake Forest University) and Riccardo "Jack" Lucchetti (Università Politecnica delle Marche).}
+	
+	\begin{itemize}
+		\item testing of theories
+		\item forecasting
+		\item policy analysis
+	\end{itemize}
+	
+	\medskip
+	
+	\emph{Application} of economic and statistical theory to analysis of
+	socio-economic data.
+	
+	\medskip
+	
+	But also \emph{development} of relevant statistical theory.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dual status of econometrics}
+	
+	Econometrics is not a ``sub-field'' of economics in the same sense as, e.g., labour economics or health economics. 
+	
+	\medskip
+	
+	Rather it offers a set of \emph{tools} used in almost all sub-fields
+	(other than pure theory) -- plus a discipline that is as much
+	mathematical statistics as economics.
+	
+	\medskip
+	
+	However, an econometrician is not a statistician either: an
+	econometrician is an economist with an above-average command of
+	statistics.
+\end{frame}
+
+
+\section{Econometric software}
+
+\begin{frame}
+	\frametitle{Econometric coding}
+	\begin{itemize}
+		\item Pioneers in 1960s mostly used Fortran (some big names still
+		do)
+		\item In early PC era, command-line programs offering canned
+		routines
+		\item Gauss (1984, MS-DOS), Matlab (also 1984), Ox (around 1997)
+		\item 1990s to date: Evolution of command-line programs: added GUIs
+		and also elements of matrix-oriented languages (Stata, 1985;
+		Eviews, 1994)
+		\item recent tendency: packages built on top of matrix-oriented
+		languages (Dynare)
+	\end{itemize}
+	
+%	See, \emph{e.g.}, Charles Renfro, ``Econometric Software'', in
+%	Belsley and Kontoghiorghes, \emph{Handbook of Computational
+%		Econometrics} (2009).
+\end{frame}
+
+\begin{frame}
+	\frametitle{Main numerical techniques in econometrics}
+	\begin{itemize}
+		\item Widespread use of matrices (mostly real, only rarely complex)
+		\item Classical optimization techniques for smooth functions
+		(fancier stuff like genetic algorithms also used, but sparingly)
+		\item RNG (increasingly popular, especially for Bayesian techniques)
+		\item A few concepts borrowed from engineering literature: spectra,
+		filtering, signal extraction.
+	\end{itemize}
+	
+	Traditionally, the dimensionality of problems is relatively small: a few Kb of RAM often suffice to hold data. This is rapidly changing nowadays with ``big data'' problems.
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{The ``market''/uses for econometrics-related
+		software}
+	
+	\begin{enumerate}
+		\item Undergraduate teaching (a big industry)
+		\item Professional applied work; this could be split into
+		\begin{enumerate}
+			\item academic use (universities mostly)
+			\item corporate use (traditionally large financial institutions but nowadays also large retailers such as Amazon/Google)
+			\item policy (central banks, other government/supranational institutions)
+		\end{enumerate}
+		\item Development of new estimators/tools
+	\end{enumerate}
+	
+	Currently dominated by proprietary software -- packages such as
+	Stata and Eviews (for 1 and 2), plus Matlab (for 2.3 and 3).
+	\medskip
+	
+	But	also incursion of R and gretl, and some use of lower-level languages for use 3.
+	\medskip
+	
+	Very few people use compiled languages (C, Fortran etc.), even for CPU-intensive tasks.
+\end{frame}
+
+
+\section{Some background information on Gretl}
+
+\begin{frame}{Some background information on Gretl \textbf{I}}
+	\begin{itemize}
+		\item Acronym for: 
+		\textbf{G}nu \textbf{R}egression, \textbf{E}conometrics and \textbf{T}ime-series \textbf{L}ibrary
+		\item URL: \url{http://gretl.sourceforge.net/}
+		\item Comprises a large shared library, a common command line program and a GUI client.
+		\item Makes use of reliable free software packages, e.g. (multi-threaded) LAPACK/BLAS, fftw, GTK, gnuplot, etc.
+		\item First version released in January 2000 and has been under active development since then $ \to $ \textit{open-source} and \textit{free}.
+		\item Written in C and available for Windows, OS X and Linux.
+		\item User interface is available in 16 languages.
+		\item Gretl is documented in a \textit{User Guide} of 350+ pages and a \textit{Command Reference} of 160+ pages; a tutorial introduction to hansl is also available.		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Some background information on Gretl \textbf{II}}
+	\begin{itemize}
+		\item Gretl comprises a full featured graphical user interface (GUI).
+		\item Functions can be driven either by hansl scripting or by the GUI.
+	\end{itemize}
+	\vspace{0.5cm}
+	\textbf{Unique Selling Point}
+	
+	\begin{itemize}
+		\item Gretl offers a \textbf{high-level matrix oriented language} similar to Matlab and Gauss ...
+		\item \textbf{AND} a high-level language that is attuned to \textbf{econometrics}.
+	\end{itemize}
+	
+\end{frame}
+
+\section{Datasets and matrices}
+
+\begin{frame}{Datasets}
+	\begin{itemize}
+		\item A dataset is basically the union of matrix $ \textbf{y} $ (T by k) and $ \textbf{X} $ (T by m) with some additional metadata.
+		\item Econometrics deals with the three main forms of data: (i) cross-section, (ii) time-series and (iii) panel.
+		\item Think of a dataset as a big matrix. To make sense of a regression one needs to know:
+		\begin{itemize}
+			\item What the columns and rows refer to?
+			\item Are the rows representing time period: (i) whas is the sample beginning and sample end, (ii) at what frequency were data recorded?
+		\end{itemize}
+		\item In econometric software the dataset is typically \textit{not} a matrix as such but a richer structure. \\
+		$ \Rightarrow $ part or all of the dataset can be turned into a matrix on demand.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Datasets}
+%	\begin{itemize}
+%		\item \textbf{1st Duality} in hansl: the availability of the \textit{dataset}  as a specific data structure, alongside computer representations of the standard mathematical type.
+%	\end{itemize}
+	  Key abstractions in the econometric domain (besides those found in
+	  general matrix-oriented software):
+	  \begin{itemize}
+	  	\item ``the dataset'' (plus series, lists of series)
+	  	\item ``the bundle'' (as a means of avoiding the need for functions
+	  	with an excessive number of parameters)
+	  \end{itemize}
+	  
+	  %\pause
+	  
+	  \textbf{Duality}
+	  \begin{itemize}
+	  	\item Matrices, scalars, strings, arrays, bundles, functions (harder but flexible) \emph{versus}
+	  	\item Datasets, series, commands (easy)
+	  \end{itemize}
+	  
+	  \vspace{0.5cm}
+	  
+	  Softening of duality achieved via ``\underline{accessors}'' that can be used following commands. %(Non-trivial commands become somewhat function-like.)
+	
+\end{frame}
+
+\section{Hansl}
+
+\begin{frame}{Hansl -- “Hansl’s A Neat Scripting Language"}
+	
+	\begin{itemize}
+		\item Path of gretl development similar to proprietary software (DOS
+		command line program $\to$ cross-platform $\to$ add GUI $\to$ add
+		Matlab-like matrix functionality $\to$ add advanced scripting $ \to $ parallelisation) %\pause
+		\item ``Feel'' of scripting language owes something to bash shell (UNIX).
+		\item C back-end (of course, with a little help from friends:
+		netlib, BLAS, lapack, FFTW and others) %\pause
+		\item Transition to development of gretl via hansl (function
+		packages, with optional GUI integration) %\pause
+		\item Some ``legacy'' formulations and inconsistencies, but hansl is much cleaner and easier to learn than many others (Stata, Eviews,	even R); OK, I may be a little biased here \texttt{;-)}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Hansl}
+	\begin{itemize}
+		\item Hansl's repertoire includes over 130 commands to date:
+		\begin{itemize}
+			\item (hypothesis) Tests
+			\item (descriptive) Statistics
+			\item Dataset (manipulation, sorting, etc.)
+			\item Estimation (OLS, MLE, GMM, single-eq. and systems, etc.)
+			\item Graphs (scatter plots, boxplot, time-series, etc.)
+			\item Programming (control flow and debugging)
+			\item Transformations
+			\item Printing
+			\item Utilities
+			\item Forecasting
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Models and methods}
+
+\begin{frame}{Models}
+	Gretl \textit{natively} implements a wide number of models and methods
+	\begin{itemize}
+		\item Time series methods
+		\begin{itemize}
+			\item ARIMA, univariate GARCH-type, (S)VARs and VECMs, unit root and cointegration tests, Kalman filter, MIDAS, real-time datasets
+		\end{itemize}
+		\item Limited dependent variables
+		\begin{itemize}
+			\item logit, probit, tobit, sample selection, interval regression, models for count and duration data, etc.
+		\end{itemize}
+		\item Panel-data estimators, including instrumental variables, probit and GMM-based dynamic panel models
+	\end{itemize}
+	Many more methods are provided by \textit{user-contributed} packages
+	\medskip
+	
+	\url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/gretldata.cgi?opt=SHOW_FUNCS}
+\end{frame}
+
+\subsection{User-contributed provided packages}
+
+\begin{frame}{User-contributed provided packages}
+	Currently about 104 user-contributed packages are provided. Some time-series/panel packages you might be interested in are e.g.:
+	\footnotesize
+	\begin{itemize}
+		\item \texttt{BMA} -- Bayesian Model Averaging for the linear regression models with jointness measures
+		%\item \texttt{BNdecomp.} -- Beveridge-Nelson Decomposition
+		\item \texttt{BreitungCandelonTest} -- Breitung-Candelon test of frequency-wise Granger (non-) causality
+		\item \texttt{coint2rec} -- Cointegration stability tests (Hansen\&Johansen)
+		\item \texttt{DIF\_panelcoint} -- Panel (non)-cointegration tests with bootstrap p-values
+		\item \texttt{gig} -- An assortment of univariate GARCH models
+		
+		\item \texttt{gregory\_hansen} -- Residual-based tests for cointegration in models with regime shifts
+		\item \texttt{johansensmall} -- Small-sample Johansen coint. rank tests (bootstrap and Bartlett)
+		\item \texttt{StrucBreak} -- Autodetection of structural breaks in linear models, Bai-Perron style
+		\item \texttt{SVAR} -- Structural VARs
+		\item \texttt{Threshold\_Panel} -- Panel threshold model (Hansen, JoE 1999)
+	\end{itemize}
+\end{frame}
+
+
+\section{Hansl by example}
+
+\begin{frame}{Hansl by example: estimating a VAR}
+	
+	A \emph{VAR} is a commonly-used tool in macroeconomics: in its most
+	basic incarnation:
+	\begin{equation}
+	\label{eq:VAR}
+	y_t = \mu + \sum_{i=1}^p \Phi_i y_{t-i} + \varepsilon_t
+	\end{equation}
+	
+	\begin{itemize}
+		\item $y_t$ is an $n$-dimensional vector of observable quantities at
+		time $t$; typically, macroeconomic variables: unemployment rate,
+		inflation, interest rates, etc.
+		\item The $\mu$ vector and the $\Phi_i$ matrices are unknown and
+		must be estimated from the data.
+		\item $\varepsilon_t$ is an $n$-dimensional vector white noise
+		process.
+	\end{itemize}
+	
+	Suppose that \eqref{eq:VAR} is a valid representation for the
+	observed data: the econometrician's job is to estimate the unknown
+	quantities so that the model can be used for policy analysis and
+	forecasting.
+\end{frame}
+
+\begin{frame}
+	
+	\url{var-script.pdf}
+	
+	\url{var-script.inp}
+	
+\end{frame}
+
+
+
+\section{Other aspects}
+
+\begin{frame}{Supported data formats}
+	Supported formats include: 
+	
+	\begin{itemize}
+		\item Own XML data files
+		\item Comma Separated Values
+		\item Excel
+		\item Gnumeric and Open Document worksheets
+		\item Stata .dta files
+		\item SPSS .sav files
+		\item Eviews workfiles
+		\item JMulTi data files
+		\item Own format binary databases (allowing mixed data frequencies and series lengths)
+		\item RATS 4 databases and PC-Give databases
+		\item Includes a sample US macro database. See also the gretl data page. 
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Communication with other software}
+	Gretl can interact with other software packages.
+	\medskip
+	
+	Easily send and receive datasets and matrices.
+	\medskip
+	
+	Call other software via Gretl's \texttt{foreign-language} block.
+	\medskip
+	
+	List of software supported:
+	
+	\begin{itemize}
+		\item R
+		\item Ox
+		\item Octave
+		\item Stata
+		\item Python
+		\item Julia
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]%{Gretl and R Example}
+	\textbf{Gretl and R Example}
+	\footnotesize
+\begin{verbatim}
+
+function list RStructTS(series myseries)
+    smpl ok(myseries) --restrict
+    sx = argname(myseries)
+    foreign language=R --send-data --quiet
+        @sx <- gretldata[, "myseries"]
+        strmod <- StructTS(@sx)
+        compon <- as.ts(tsSmooth(strmod))
+        gretl.export(compon)
+    end foreign
+    append @dotdir/compon.csv
+    rename level @sx_level
+    rename slope @sx_slope
+    rename sea @sx_seas
+    list ret = @sx_level @sx_slope @sx_seas
+    return ret
+end function
+# ------------ main -------------------------
+open bjg.gdt
+list X = RStructTS(lg)
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}{Parallelization in Hansl}
+	
+	Via \textbf{OpenMP}
+	
+	\medskip
+	
+	Via \textbf{MPI}: Gretl has
+	
+	%\medskip
+	
+	{\footnotesize
+		\begin{tabular}{l}
+			\texttt{scalar mpisend(object x, int dest)} \\ 
+			\qquad  -- send object \texttt{x} to node \texttt{dest}\\
+			\texttt{object mpirecv(int src)} \\ 
+			\qquad  -- receive an object from node \texttt{src} \\
+			\texttt{scalar mpibcast(object *x [,int root])} \\ 
+			\qquad  -- broadcast object \texttt{x} \\
+			\texttt{scalar mpireduce(object *x, string op [,int root])} \\ 
+			\qquad  -- reduce object \texttt{x} via \texttt{op} \\
+			\texttt{scalar mpiallred(object *x, string op)} \\
+			\qquad  -- reduce object \texttt{x} via \texttt{op}, all nodes \\
+			\texttt{scalar mpiscatter(matrix *m, string op [,int root])} \\ 
+			\qquad  -- scatter matrix \texttt{m} using \texttt{op} \\
+		\end{tabular}
+	}
+	\medskip
+	
+	For details and examples see here: \url{https://sourceforge.net/projects/gretl/files/manual/gretl-mpi-a4.pdf/download}
+\end{frame}
+
+
+\section{Get started with Gretl and Hansl}
+
+\begin{frame}{Get started with Gretl and Hansl}
+	Take a look at the following resources to start
+	\footnotesize
+	\begin{itemize}
+		\item \textit{Gretl Command Reference} (accessible via the Help menu in the gretl GUI): contains a complete listing of the commands and built-in functions available in hansl, with a full account of their syntax and options.
+		\item \textit{Gretl User’s Guide}: Chapters 10 to 16 on data types, loops, the definition and use of functions.\\
+		\url{http://sourceforge.net/projects/gretl/files/manual/}
+		\item \textit{Sample scripts}: The gretl package comes with a large number of sample or practice scripts (under menu item /File/Script files/Practice file).
+		\item \textit{Function packages}: Ambitious examples of hansl coding (via the gretl menu item /Tools/Function packages/On server.)
+		\item \textit{gretl-users mailing list}: Most well-considered questions get answered quite quickly and
+		fully\\
+		\url{http://lists.wfu.edu/mailman/listinfo/gretl-users}
+		\item Textbook \textit{Using gretl for Principles of Econometrics} (4th edit.) \url{http://www.learneconometrics.com/gretl/}
+	\end{itemize}
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Referenzen}
+\bibliographystyle{chicago}
+\setcounter{secnumdepth}{0}
+
+%\begin{frame}[allowframebreaks]
+%	\frametitle{Literatur}
+%	\footnotesize
+%	\bibliography{../../../Dropbox/05_Literatur_DATENBANK/library}
+%\end{frame}
+
+
+%\section{Appendix}
+
+
+
+\end{document}

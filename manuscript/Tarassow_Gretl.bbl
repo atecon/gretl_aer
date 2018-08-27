@@ -1,0 +1,14 @@
+\begin{thebibliography}{}
+
+\bibitem[Adkins, 2014]{Adkins2014}
+Adkins, L.~C. (2014).
+\newblock {\em {Using gretl for Principles of Econometrics, 4th Edition}}.
+\newblock Number 1412.
+
+\bibitem[Cottrell, 2017]{Cottrell2017}
+Cottrell, A. (2017).
+\newblock Hansl: A dsl for econometrics.
+\newblock In {\em Proceedings of the 2Nd International Workshop on Real World
+  Domain Specific Languages}, RWDSL17, pages 1:1--1:10, New York, NY, USA. ACM.
+
+\end{thebibliography}
