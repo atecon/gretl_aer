@@ -105,7 +105,7 @@ print trandom -o
 #####################
 # VAR				#
 #####################
-list ylist = dU gY
+list ylist = dU gY		# specify list of regressor 
 var 8 ylist --lagselect
 Model <- var 2 ylist
 modtest 4 --autocorr	# test on 1st order serial correlation
