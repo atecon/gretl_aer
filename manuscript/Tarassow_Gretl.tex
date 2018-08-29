@@ -154,17 +154,20 @@ For more technical details on Hansl see \citet{Cottrell2017}.
 
 To date Gretl \textit{natively} implements a variety of models, methods and functions among others such as: 
 \begin{enumerate}
-	\item Time series data: ARIMA, GARCH-type, (S)VARs and (S)VECMs, unit root and cointegration tests, Kalman filter, mixed time-series frequencies (MIDAS), etc.
+	\item Time series data: ARIMA, GARCH-type, (S)VARs and (S)VECMs, unit root and cointegration tests, State Space modelling, Kalman filter, Structural Time Series Models, mixed time-series frequencies (MIDAS), etc.
 	\item Limited dependent variables: Logit, Probit, Tobit, interval regression, models for count and duration data, etc.
-	\item Panel-data: Instrumental variables, Probit and
-	GMM-based panel models, etc.
+	\item Panel-data: Instrumental variables, Probit,
+	GMM-based dynamic panel models, etc.
 	\item Output models as RTF or LaTeX files, in tabular or equation format.
 	\item Using gnuplot for compiling high-quality graphs.
+	\item Estimation of models that are not natively present in Gretl neither handled by function packages, via the \texttt{mle} or \texttt{gmm} command block.  
 	\item Support for machine learning via the LIBSVM library.
 \end{enumerate}
 Besides Gretl's core functionality, several addons \\ (\url{http://gretl.sourceforge.net/addons-data/addons.xml}) and numerous contributed function packages (\url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/gretldata.cgi?opt=SHOW_FUNCS}) are hosted online and are easily accessible through Gretl.
 
-As a great plus, Gretl supports the capability to communicate with other software packages such as Stata, Python, R, Julia, Ox and Octave. See Section \ref{sec:foreign} in the Appendix for details.%The \textit{foreign}-block is an interface to include statements of other languages into a hansl script allowing to send and receive information (in the form of matrices). Thus, users can call and execute functions available in other software packages which are, for instance, currently not available in Gretl. For details see the Appendix \ref{sec:foreign}.
+Additionally, and this may make Gretl very attractive for advanced applications, is the fact that that using Hansl one can estimate models that are not natively present in libgretl neither handled by function packages, via the \texttt{mle} command for Maximum likelihood estimation, the \texttt{gmm} command for General Methods of Moments estimation and other similar ones that require non-linear optimization. The Gretl team has implemented very efficient optimisation techniques much on the same level as what you get in Python, R or Matlab. For details and examples, we refer to Ch. 23 and 24 in the Gretl manual.
+
+Another feature is that Gretl supports the capability to communicate with other software packages such as Stata, Python, R, Julia, Ox and Octave. See Section \ref{sec:foreign} in the Appendix for details.%The \textit{foreign}-block is an interface to include statements of other languages into a hansl script allowing to send and receive information (in the form of matrices). Thus, users can call and execute functions available in other software packages which are, for instance, currently not available in Gretl. For details see the Appendix \ref{sec:foreign}.
 
 
 \section{Getting Started in Gretl}
@@ -720,6 +723,8 @@ which is exactly the coefficient matrix we have obtained before by the \texttt{v
 Our intent has been to introduce the statistics and econometrics software Gretl and its scripting language Hansl. Gretl handles standard data types for doing data analysis. The language supports commands as well as a fully-fledged programming language. Commands are accessible either via a graphical user interface or a command line. The software includes many functions tailored for statistics and econometrics purposes. Additionally, Gretl's community has programmed and published over 100 additional addons or packages continuously extending its functionalities. These features declare Gretl a serious competitor on the market for statistics and econometrics software which should be considered by students, teachers as well as professionals.
 
 This paper has provided a step-by-step guide ranging from data loading, management and initial analysis over model specification and testing up to model analysis. We have estimated a dynamic vector autoregressive time-series model and shows how easily one can conduct a structural as well as forecasting analysis using Gretl.
+
+We want to mention that Gretl is a continuously developing software. Interested users are asked to post Gretl-related questions, to request features and to report bugs on the Gretl mailings (\url{http://gretl.sourceforge.net/lists.html}). Furthermore, everybody is encouraged to develop user-contributed packages on which an open-source statistics and econometrics software heavily relies on.
 
 
 % #############################################################

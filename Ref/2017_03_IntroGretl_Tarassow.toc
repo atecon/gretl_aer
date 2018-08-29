@@ -1,0 +1,11 @@
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Aims and general character}{3}{0}{1}
+\beamer@sectionintoc {2}{Econometric software}{5}{0}{2}
+\beamer@sectionintoc {3}{Some background information on Gretl}{8}{0}{3}
+\beamer@sectionintoc {4}{Datasets and matrices}{10}{0}{4}
+\beamer@sectionintoc {5}{Hansl}{12}{0}{5}
+\beamer@subsectionintoc {5}{1}{Models and methods}{14}{0}{5}
+\beamer@subsectionintoc {5}{2}{User-contributed provided packages}{15}{0}{5}
+\beamer@sectionintoc {6}{Hansl by example}{16}{0}{6}
+\beamer@sectionintoc {7}{Other aspects}{18}{0}{7}
+\beamer@sectionintoc {8}{Get started with Gretl and Hansl}{22}{0}{8}
