@@ -68,6 +68,7 @@ print UNRATE dU GDPC1 gY --byobs
 # Restrict the sample 
 smpl 1985:1 2007:4
 
+/*
 # Lag order
 var 8 dU gY --lagselect
 
@@ -85,7 +86,7 @@ printf "Impact multiplier %g\n", $coeff(gY)
 scalar lr = ($coeff(gY)+$coeff(gY_1)+$coeff(gY_2)) / (1-$coeff(dU_1)-$coeff(dU_2))
 printf "Long-run m. %g\n", lr
 
-
+##################################
 # OLS using Gretl's matrix language
 matrix Y = {dU}		# takes eventually restricted sample into account
 list xlist = const dU(-1 to -2) gY(0 to -2)
@@ -97,3 +98,47 @@ printf "%12.6g\n", bhat'
 rvec = mrandgen(t, 14, $nobs, 10)	# t(14)-distribution
 series trandom = rvec[,2]
 print trandom -o
+
+*/
+
+
+#####################
+# VAR				#
+#####################
+list ylist = dU gY
+var 8 ylist --lagselect
+Model <- var 2 ylist
+modtest 4 --autocorr	# test on 1st order serial correlation
+modtest --arch
+modtest --normality
+
+# IRF based on Cholesky
+set horizon 16 # forecast horizon
+loop foreach target ylist --quiet
+    loop foreach shock ylist --quiet    
+        eval shock
+        printf "Shock: %s, Target: %s\n", $shock, $target #varname(ylist[$shock]), varname(ylist[$target])
+        eval irf($target, $shock)
+        #eval varname(ylist[1])
+        stop
+    endloop
+endloop
+
+    
+# FEDVD
+
+# Forecasting
+
+# VAR in matrix form
+matrix y = {dU}~{gY}   # takes eventually restricted sample into account
+list xlist = const dU(-1 to -2) gY(-1 to -2)
+matrix X = {xlist}
+bhat = inv(X'X)*X'y
+bhat = bhat'		# transpose k by 2 matrix
+colnames(bhat, "const dU_1 dU_2 gY_1 gY_2")
+rownames(bhat, "dU-eq: gY-eq:")
+printf "%12.6g\n", bhat
+
+
+
+
