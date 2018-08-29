@@ -8,16 +8,17 @@
 \BOOKMARK [2][-]{subsection.3.3}{Basic Commands}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.4}{Plotting}{section.3}% 9
 \BOOKMARK [1][-]{section.4}{Let's estimate a dynamic time-series model}{}% 10
-\BOOKMARK [1][-]{section.5}{Working with matrices}{}% 11
-\BOOKMARK [1][-]{section.6}{Summary}{}% 12
-\BOOKMARK [1][-]{section.6}{REFERENCES}{}% 13
-\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 14
-\BOOKMARK [2][-]{subsection.A.1}{Further Resources}{appendix.A}% 15
-\BOOKMARK [2][-]{subsection.A.2}{Data Preparation and Cleaning Process}{appendix.A}% 16
-\BOOKMARK [2][-]{subsection.A.3}{Add-ons and Contributed Packages}{appendix.A}% 17
-\BOOKMARK [2][-]{subsection.A.4}{Econometric Models}{appendix.A}% 18
-\BOOKMARK [2][-]{subsection.A.5}{Logical Operators}{appendix.A}% 19
-\BOOKMARK [2][-]{subsection.A.6}{if-conditions}{appendix.A}% 20
-\BOOKMARK [2][-]{subsection.A.7}{Loops}{appendix.A}% 21
-\BOOKMARK [2][-]{subsection.A.8}{Functions}{appendix.A}% 22
-\BOOKMARK [2][-]{subsection.A.9}{Communication with other software packages}{appendix.A}% 23
+\BOOKMARK [2][-]{subsection.4.1}{The VAR model}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Determination of the optimal lag-order}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{VAR estimation and specification testing}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.4}{Structural analysis}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.5}{Out-of-sample forecasting}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Working with matrices}{}% 16
+\BOOKMARK [1][-]{section.6}{Summary}{}% 17
+\BOOKMARK [1][-]{section.6}{REFERENCES}{}% 18
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 19
+\BOOKMARK [2][-]{subsection.A.1}{Data Preparation and Cleaning Process}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.2}{Add-ons and Contributed Packages}{appendix.A}% 21
+\BOOKMARK [2][-]{subsection.A.3}{Loops}{appendix.A}% 22
+\BOOKMARK [2][-]{subsection.A.4}{Functions}{appendix.A}% 23
+\BOOKMARK [2][-]{subsection.A.5}{Communication with other software packages}{appendix.A}% 24

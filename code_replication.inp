@@ -109,25 +109,18 @@ list ylist = dU gY
 var 8 ylist --lagselect
 Model <- var 2 ylist
 modtest 4 --autocorr	# test on 1st order serial correlation
-modtest --arch
+modtest 4 --arch
 modtest --normality
 
 # IRF based on Cholesky
-set horizon 16 # forecast horizon
-loop foreach target ylist --quiet
-    loop foreach shock ylist --quiet    
-        eval shock
-        printf "Shock: %s, Target: %s\n", $shock, $target #varname(ylist[$shock]), varname(ylist[$target])
-        eval irf($target, $shock)
-        #eval varname(ylist[1])
-        stop
-    endloop
-endloop
+var 2 ylist --impulse-responses # print impulse responses
 
-    
-# FEDVD
+# VEVD based on Cholesky
+var 2 ylist --variance-decomp  # print variance decompositions
 
 # Forecasting
+fcast 2008:1 2018:2 --dynamic
+
 
 # VAR in matrix form
 matrix y = {dU}~{gY}   # takes eventually restricted sample into account
