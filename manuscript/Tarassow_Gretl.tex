@@ -849,7 +849,7 @@ help ADMBP		   # opens help text or pdf-manual (if available)
 
 \subsection{Loops}
 For details read Ch. 12 in the Gretl manual. The command \texttt{loop} opens a special mode in which gretl accepts a block of commands to be repeated zero or more times. The general form of a loop is:
-\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+\begin{Verbatim}[baselinestretch=0.75, fontsize=\small, frame=single]
 loop control-expression [ --progressive | --verbose | --quiet ]
 	loop body
 endloop
@@ -865,14 +865,14 @@ Gretl supports various loop control variants such as "Count", "While", "Index", 
 
 \subsection{Functions}
 For details read Ch. 13 in the Gretl manual. Gretl offers a mechanism for defining functions, which may be called via the command line, in the context of a script, or (if packaged appropriately, see section 13.5) via the program’s graphical interface. The syntax for defining a function looks like this:
-\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+\begin{Verbatim}[baselinestretch=0.75, fontsize=\small, frame=single]
 function type funcname (parameters)
 	function body
 end function
 \end{Verbatim}
 
 Here is an example for the use of functions:
-\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+\begin{Verbatim}[baselinestretch=0.75, fontsize=\small, frame=single]
 # function definition
 function scalar ols_ess (series y, list xvars)
 	ols y 0 xvars --quiet
