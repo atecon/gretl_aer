@@ -68,7 +68,8 @@ print UNRATE dU GDPC1 gY --byobs
 # Restrict the sample 
 smpl 1985:1 2007:4
 
-/*
+/* ACTIVATE IFF WANTED
+
 # Lag order
 var 8 dU gY --lagselect
 

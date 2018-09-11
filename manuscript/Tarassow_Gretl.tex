@@ -81,7 +81,7 @@
 	\title{\bf Practical Empirical Research Using Gretl and Hansl}
 	%\title{\bf Improved Monetary Forecasts by Means of Economic Uncertainty Measures and Regularisation Techniques}
 	\author{Artur Tarassow\thanks{
-			The author is grateful to XXX for helpful comments. Any remaining errors or omissions are strictly our own.}\hspace{.2cm}\\
+			I am grateful to Allin Cottrell, Riccardo (Jack) Lucchetti and Sven Schreiber for helpful comments. Any remaining errors or omissions are strictly our own.}\hspace{.2cm}\\
 		Department of Socioeconomics, University of Hamburg}
 	\maketitle
 } \fi
@@ -99,7 +99,7 @@
 
 \bigskip
 \begin{abstract}
-	This article provides an introduction to the free open-source statistics and econometrics software named Gretl for cross-sectional, time-series as well as panel data. Gretl is an attempt to bridge the different demands for teaching at different levels but also by providing functionalities required for professional work. We provide basic information on Gretl and its powerful and intuitive scripting language "Hansl". We introduce Gretl and Hansl by going step-by-step from the scratch through a real-life data analysis example. Finally, we estimate a vector autoregressive dynamic regression model using Gretl for conducting impulse-response analysis as well as for forecasting purposes.
+	This article provides an introduction to the free open-source statistics and econometrics software Gretl for cross-sectional, time-series as well as panel data. Gretl is an attempt to bridge the different demands for teaching at different levels. Furthermore, it also provides functionalities required for professional work. We also introduce Gretl's powerful and intuitive scripting language "Hansl". This article can be seen as a step-by-step guide from the scratch through a real-life data analysis example. Finally, we estimate a vector autoregressive time-series model using Gretl for structural analyses as well as for forecasting purposes.
 \end{abstract}
 
 %\noindent%
@@ -115,65 +115,65 @@
 \newpage
 \section{Introduction}
 \label{sec:intro}
-Data analysis is a vital part of the economic training and of an professional economist's daily life. Economists are trained to be sophisticated users of data, and econometrics --- the interplay of economic theory, statistics and mathematics --- is a subject which usually economics students have to attend. %A typical economics degree program comprises subjects on data management, statistics, model simulation and estimation.
-Undergraduates studying economics are typically exposed courses in statistics and econometrics, covering the practice and interpretation of least-squares regression, data management and data visualisation. Graduate students learn the advanced treatments of the subject, likely involving Maximum Likelihood estimation, simulation and so on. Professional economists --- whether in public or private institutions --- are likely to find themselves using, or possibly developing, econometric methods.
+Data analysis is a vital part of the economic training and of a professional economist's daily life. Economists are trained to be sophisticated users of data, and econometrics --- the interplay of economic theory, statistics and mathematics --- is a subject which usually economics students have to attend. %A typical economics degree program comprises subjects on data management, statistics, model simulation and estimation.
+Undergraduates studying economics are typically exposed to courses in statistics and econometrics, covering the practice and interpretation of least-squares regression, data management and data visualisation. Graduate students learn the advanced treatments of the subject, likely involving Maximum Likelihood estimation, simulation and so on. Professional economists --- whether in public or private institutions --- are likely to find themselves using, or possibly developing, econometric methods.
 
-Gretl is an open-source and freely available statistics and econometrics software attempting to bridge the different demands for teaching at different levels as well as professional work. It comprises a full-featured graphical interface but also a powerful scripting language called hansl. Gretl's scripting language can be seen as a domain-specific language for statistics and econometrics. Gretl handles datasets --- a matrix but with a richer structure including some meta-information %information on the data type, eventual calendar date and recorded data frequency 
+Gretl is an open-source and freely available statistics and econometrics software attempting to bridge the various demands for teaching at different levels as well as for professional work. It comprises a full-featured graphical interface but also a powerful scripting language called Hansl. This scripting language can be seen as a domain-specific language for statistics and econometrics. Gretl handles datasets --- a matrix but with a richer structure including some meta-information %information on the data type, eventual calendar date and recorded data frequency 
 --- similar to Eviews but can also deal with pure matrices and arrays such as Matlab, Gauss and Julia for advanced programming purposes.
 
-In the following, we will introduce Gretl --- and to some extend hansl --- alongside a practical empirical example using time-series data. Nevertheless, it should be mentioned that Gretl can also deal with methods and estimators for cross-sectional as well as panel data structures.
-
-The paper is structured as follows. The next section discusses the market of econometrics software and introduces Gretl and its scripting language hansl. Section 3 introduces Gretl's graphical user interface and explains how to conduct data basic management and analyses steps accompanied by an overview about essential commands. In Section 4 a vector autoregressive time-series model will be estimated and it will be shown how the model's dynamics can be analysed for structural or forecasting purposes. Section 5 introduces the work with matrices before Section 6 summarises.
+In the following, we will introduce Gretl --- and to some extend Hansl --- alongside a practical empirical example using time-series data. % Nevertheless, it should be mentioned that Gretl includes numerous methods and estimators for various data types.
+The paper is structured as follows. The next section discusses the market of econometrics software and presents Gretl and Hansl. Section 3 introduces Gretl's graphical user interface and explains how to conduct basic data management as well as some initial analyses by providing an overview about essential commands. In Section 4 a vector autoregressive time-series model will be estimated and it will be shown how the model's dynamics can be analysed for structural or forecasting purposes. Section 5 briefly introduces the work with matrices before Section 6 summarises.
 
 
 \section{Econometric Software and Gretl}
 
 \subsection{The 'Market' of econometrics software}
-The demands placed on an econometric software are a delicate issue. For teaching purpose it makes sense to have undergraduate students work with reasonably user-friendly software --- in the easiest case controlling the software by a graphical user interface through point-and-click using the mouse. However, it makes little sense to introduce a software to undergraduates which does not support more advanced methods and does not offer a fully-fledged scripting and programming environment --- aspects which are required for an advanced treatment in graduate classes and for professionals. And of course there's a premium on teaching "marketable skills" rather than dead-end expertise.
+The demands placed on an econometric software are a delicate issue. For teaching purpose it makes sense to have undergraduate students work with reasonably user-friendly software --- in the easiest case controlling the software by a graphical user interface through point-and-click using the mouse. However, it makes little sense to introduce a software to undergraduates which does not support more advanced methods and does not offer a fully-fledged scripting and programming environment --- aspects which are required for an advanced treatment in graduate classes and for professionals. And of course there is a premium on teaching "marketable skills" rather than dead-end expertise.
 
-Gretl is a program which attempts to bridge these different demands. It comprises a full-featured graphical interface (the GUI): its underlying
-functionality can be driven either Gretl's scripting language or by the apparatus of menus, dialog boxes and so on. The developers try to ensure that almost everything that can be done via scripting can also be done via the GUI, and vice versa, with only few exceptions \citep{Cottrell2017}.
+Gretl is a program which attempts to bridge these different demands. It comprises a full-featured graphical user interface (the GUI): its underlying
+functionality can be driven either by Gretl's scripting language or by the apparatus of menus, dialogue boxes and so on. The lead developers --- Allin Cottrell from Wake Forest University and Riccardo (Jack) Lucchetti from Università Politecnica delle Marche --- try to ensure that almost everything that can be done via scripting can also be done via the GUI, and vice versa, with only few exceptions \citep{Cottrell2017}.
 
 Gretl's main competitors are the major proprietary econometrics packages, Stata and Eviews, and also the major open-source statistical software project, R. As in Gretl, datasets and series are also basic in Stata and Eviews, and econometric functionality is supported by a wide range of built-in commands. Even though both Stata and Eviews support scripting, their respective languages are quite odd from the point of view of a programmer used to general-purpose scripting languages or Matlab-like interfaces for matrix manipulation. %\remph{One cannot define a function as such in either Stata or Eviews.}
 Gretl offers the common apparatus of fully-fledged programming languages (function-calling, function-definition, declaration of and assignment to named variables of various types) similar of what is known from Matlab, R and Python.
 
 \subsection{Gretl and Hansl}
-Gretl is acronym for \textbf{G}nu \textbf{R}egression, \textbf{E}conometrics and \textbf{T}ime-series \textbf{L}ibrary. The software is available for Windows, Mac OS X as well as Linux through the official Gretl homepage: \url{http://gretl.sourceforge.net/}. It is free, open-source software which may be redistributed and/or modified under the terms of the GNU General Public License as published by the Free Software Foundation.
+Gretl is an acronym for \textbf{G}nu \textbf{R}egression, \textbf{E}conometrics and \textbf{T}ime-series \textbf{L}ibrary. The software is available for Windows, Mac OS X as well as Linux through the official Gretl homepage: \url{http://gretl.sourceforge.net/}. It is free, open-source software which may be redistributed and/or modified under the terms of the GNU General Public License as published by the Free Software Foundation.
 
 Gretl comprises %a large shared library,
 a common command line (CLI) program and a GUI client, and makes use of reliable free and open-source software packages in the 'background' for computations, e.g. (multi-threaded) LAPACK/BLAS, fftw, GTK, gnuplot, etc. The first Gretl version was released in January 2000 and has been under active development %, mainly using the C programming language, 
-since then. Its user interface is available in 17 languages thanks to an active community. Gretl is shipped with a User Guide of already 380+ pages, a Command Reference of 210+ pages, and a "A Hansl Primer" tutorial to Gretl's scripting language.%named "hansl" among additional useful documents.
+since then. Its user interface is available in 17 languages thanks to an active community. Gretl is shipped with a User Guide of already 380+ pages, a Command Reference of 210+ pages, and a "A Hansl Primer" tutorial to Gretl's scripting language. %named "hansl" among additional useful documents.
+The latest stable release is version 2018c which was published 2018-09-03.
 
 %Apart from the GUI, functions can also be driven by scripting using Gretl's scripting language \textit{hansl}.
 As the unique selling point, Gretl offers a high-level matrix oriented language with a syntax similar to Matlab or Gauss, and an intuitive high-level scripting language called \textit{Hansl} that is attuned to econometrics. This makes Gretl especially interesting for lecturing statistics and econometrics but also for serious research.
 
 Hansl --- “\textbf{H}ansl’s \textbf{A} \textbf{N}eat \textbf{S}cripting \textbf{L}anguage” --- was developed over time and has become a very advanced high-level scripting language with more than 140 commands specifically tailored to the domain of econometrics to date. 
-The lead developers, Allin Cottrell and Riccardo "Jack" Lucchetti, have pushed the progress of Gretl mainly through Hansl in recent times. Users and developers are asked to program and publish user-contributed function packages by means of Hansl rather than the low-level language C. A great plus of Hansl-based function packages is that it comes with a handy optional GUI integration making it possible for developers to add access to specific functions through the GUI rather than solely through functions. % Most important: Hansl is a very clean and intuitive scripting language with a very nice syntax as you will see below.
+The lead developers have pushed the progress of Gretl mainly through Hansl in recent times. Users and developers are asked to program and publish user-contributed function packages by means of Hansl rather than the low-level programming language C. A great plus of Hansl-based function packages is that it comes with a handy optional GUI integration making it possible for developers to add access to specific functions through the GUI rather than solely through functions. % Most important: Hansl is a very clean and intuitive scripting language with a very nice syntax as you will see below.
 For more technical details on Hansl see \citet{Cottrell2017}.
 
 
-To date Gretl \textit{natively} implements a variety of models, methods and functions among others such as: 
+To date Gretl natively implements a variety of models, methods and functions among others such as: 
 \begin{enumerate}
-	\item Time series data: ARIMA, GARCH-type, (S)VARs and (S)VECMs, unit root and cointegration tests, State Space modelling, Kalman filter, Structural Time Series Models, mixed time-series frequencies (MIDAS), etc.
-	\item Limited dependent variables: Logit, Probit, Tobit, interval regression, models for count and duration data, etc.
-	\item Panel-data: Instrumental variables, Probit,
+	\item For time series data: ARIMA, GARCH-type, (S)VARs and (S)VECMs, unit root and cointegration tests, state space modelling, Kalman filter, structural time series models, mixed time-series frequencies (MIDAS), etc.
+	\item For limited dependent variables: Logit, Probit, Tobit, interval regression, models for count and duration data, etc.
+	\item For panel data: Instrumental variables, Probit,
 	GMM-based dynamic panel models, etc.
 	\item Output models as RTF or LaTeX files, in tabular or equation format.
 	\item Using gnuplot for compiling high-quality graphs.
 	\item Estimation of models that are not natively present in Gretl neither handled by function packages, via the \texttt{mle} or \texttt{gmm} command block.  
-	\item Support for machine learning via the LIBSVM library.
+	\item Support for machine learning methods via the LIBSVM library.
 \end{enumerate}
-Besides Gretl's core functionality, several addons \\ (\url{http://gretl.sourceforge.net/addons-data/addons.xml}) and numerous contributed function packages (\url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/gretldata.cgi?opt=SHOW_FUNCS}) are hosted online and are easily accessible through Gretl.
+Besides Gretl's core functionality, several add-ons \\ (\url{http://gretl.sourceforge.net/addons-data/addons.xml}) and numerous contributed function packages (\url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/gretldata.cgi?opt=SHOW_FUNCS}) are hosted online and are easily accessible through Gretl.
 
-Additionally, and this may make Gretl very attractive for advanced applications, is the fact that that using Hansl one can estimate models that are not natively present in libgretl neither handled by function packages, via the \texttt{mle} command for Maximum likelihood estimation, the \texttt{gmm} command for General Methods of Moments estimation and other similar ones that require non-linear optimization. The Gretl team has implemented very efficient optimisation techniques much on the same level as what you get in Python, R or Matlab. For details and examples, we refer to Ch. 23 and 24 in the Gretl manual.
+Additionally, and this may make Gretl very attractive for advanced applications, is the fact that using Hansl one can estimate models that are not natively present in the libgretl library neither handled by function packages, via the \texttt{mle} command for Maximum likelihood estimation, the \texttt{gmm} command for General Methods of Moments estimation and other similar ones that require (non-)linear optimisation. The Gretl team has implemented very efficient optimisation techniques much on the same level as what you get in Python, R or Matlab. For details and examples, we refer to Ch. 23 and 24 in the Gretl manual.
 
 Another feature is that Gretl supports the capability to communicate with other software packages such as Stata, Python, R, Julia, Ox and Octave. See Section \ref{sec:foreign} in the Appendix for details.%The \textit{foreign}-block is an interface to include statements of other languages into a hansl script allowing to send and receive information (in the form of matrices). Thus, users can call and execute functions available in other software packages which are, for instance, currently not available in Gretl. For details see the Appendix \ref{sec:foreign}.
 
 
 \section{Getting Started in Gretl}
-\subsection{Gretl's Graphical User Interface}
+\subsection{The Graphical User Interface}
 %There are several ways to work in Gretl. 
-For starters, the most intuitive way is to use the program through its built-in graphical user interface (GUI). The GUI is shown in Figure \ref{fig:GUI} and consists in total of four separate windows. At the top of the main window (see Figure \ref{fig:gui_main}) you find the menu bar comprising commands to import and manipulate data, analyse data, and manage output. Below the menu bar, the user finds information on the loaded dataset and the working directory. Most space is given to the variables list where each variable is associated with a unique ID number, the variable's name and an optional descriptive label. Below the variables list, information on the loaded dataset is given such as the total number of observations or the number (and eventual time-span) of the currently selected sub-sample, respectively. The toolbar, containing a number of useful utilities, can be found at the bottom of the window. 
+For starters, the most intuitive way is to use the program through its built-in graphical user interface (GUI). The GUI is shown in Figure \ref{fig:GUI} and consists in total of four separate windows. At the top of the main window (see Figure \ref{fig:gui_main}) you find the menu bar comprising commands to import and manipulate data, analyse data, and manage output. Below the menu bar, the user finds information on the loaded dataset and the working directory. Most space is given to the variables list where each variable is associated with a unique ID number, the variable's name and an optional descriptive label. Below the variables list, information on the loaded dataset is given such as the total number of observations or the number (and eventual time-span) of the currently selected (sub-)sample, respectively. The toolbar, containing a number of useful utilities, can be found at the bottom of the window. 
 
 The console window, as depicted in Figure \ref{fig:gui_cli}, accepts Gretl commands which can be directly executed pressing "Enter". The output will immediately appear in the console. From the command prompt, '?', you can type in commands from the Gretl language or calculate something. Try for instance,
 \begin{verbatim}
@@ -181,7 +181,7 @@ The console window, as depicted in Figure \ref{fig:gui_cli}, accepts Gretl comma
 \end{verbatim}
 where the \texttt{eval} command evaluates an expression and prints its value.
 
-The icon view window (see Figure \ref{fig:gui_icon}) comprises the access to different objects such as scalar values, matrices and model objects among others --- more on this below. Lastly, the script editor, as depicted in Figure \ref{fig:gui_editor}, collects several lines of programming code into a file which can be executed all at once in a script. Serious and reproducible research relies on such scripts for recording each step of the data analysis including comments on the code.
+The icon view window (see Figure \ref{fig:gui_icon}) comprises the access to different objects such as scalar values, matrices and model objects among others --- more on this below. Lastly, the script editor, as depicted in Figure \ref{fig:gui_editor}, collects several lines of programming code into a file which can be executed all at once in a script. Serious and reproducible research relies on such scripts for recording each step of the analysis including comments.
 
 
 \begin{figure}[h!]
@@ -203,7 +203,7 @@ The icon view window (see Figure \ref{fig:gui_icon}) comprises the access to dif
 \end{figure}
 
 
-Lee Adkin's (\citeyear{Adkins2014}) terrific and freely available econometrics Ebook using Gretl for the applications provides a much deeper introduction, and is highly recommended for learning and mastering Gretl (4th edition downloadable here: \\ \url{www.learneconometrics.com/gretl/using_gretl_for_POE4.pdf}; the 5th edition will be published online very soon!). Also the manual, which can be opened from the "Help, User's guide" menu, is the first source you should check in case of questions or problems.
+Lee Adkin's (\citeyear{Adkins2014}) terrific and freely available econometrics book \emph{Using gretl for Principles of Econometrics} provides a much deeper introduction, and is highly recommended for learning and mastering Gretl (4th edition downloadable here: \\ \url{www.learneconometrics.com/gretl/using_gretl_for_POE4.pdf}; the 5th edition will be published online very soon!). Also the Gretl manual, which can be opened from the "Help, User's guide" menu, is the first source one should check in case of questions or problems.
 
 
 
@@ -216,7 +216,7 @@ The following conditions must be satisfied to make sure Gretl reads data success
 	\item The first row must contain valid variable names, otherwise the program will automatically add names, v1, v2 and so on.
 	\item Data values should constitute a rectangular block, with one variable per column (and one observation per row).
 	\item Numeric data are expected, but in	the case of importing from plain text, the program offers handling of character (string) data.
-	\item Optionally, the first column may contain strings such as	dates, or labels for cross-sectional observations
+	\item Optionally, the first column may contain strings such as	dates, or labels for cross-sectional observations.
 \end{enumerate}
 
 One can append additional data either by the \texttt{append} command or via the "File, Append data" menu: Gretl will check the
@@ -232,7 +232,7 @@ The two separate spreadsheets look as depicted in Figure \ref{fig:spread} with b
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.6\textwidth]{../figures/data_spreadsheet}
-	\caption{Raw Data of Real GDP and Unemployment Rate for the U.S., Spreadsheet}
+	\caption{Raw Data of Real GDP and Unemployment Rate for the USA, Spreadsheet}
 	\label{fig:spread}
 \end{figure}
 
@@ -261,7 +261,7 @@ Before proceeding, you should download both Excel-files and save them in a folde
 	\item data\_gdp.xls: \url{https://scm.darnold.org/atecon/gretl_aer/raw/master/data_gdp.xls}
 \end{itemize}
 
-First, we load the monthly UNRATE series stored in the "data\_unrate.xls" file via the "File, Open data, User file" menu which opens the "spreadsheed import" window (see Figure \ref{fig:load}). As the name of the first variable ('observation\_date') has its entry in the spreadsheet in column A and row 11, we start the data import of the rectangular block at this position as depicted in Figure \ref{fig:load}.
+First, we load the monthly UNRATE series stored in the "data\_unrate.xls" file via the "File, Open data, User file" menu which opens the spreadsheet import" window (see Figure \ref{fig:load}). As the name of the first variable ('observation\_date') has its entry in the spreadsheet in column A and row 11, we start the data import of the rectangular block at this position as depicted in Figure \ref{fig:load}.
 
 \begin{figure}[!h]
 	\centering
@@ -270,34 +270,34 @@ First, we load the monthly UNRATE series stored in the "data\_unrate.xls" file v
 	\label{fig:load}
 \end{figure}
 
-In case Gretl has not successfully recognized the time-series structure given some observation column (here 'observation\_date'), the user can manually determine the frequency and starting date by the menus automatically showing up in the process. Alternatively, we can set the data structure by the following command through the console
+In case Gretl has not successfully recognized the time-series structure given some observation column (here 'observation\_date'), the user can manually determine the frequency of the dataset and the starting date by the menus automatically showing up in the process. Alternatively, we can set the data structure by the following command through the console
 \begin{verbatim}
 setobs 12 1948:1 --time-series
 \end{verbatim}
-where '12' refers to the number of observations per year ('12' for monthly data) followed by the initial observation date and an option saying that the data has a time series structure. The variables which appear in the main window are of the so called 'series' type.
+where '12' refers to the number of observations per year ('12' for monthly data) followed by the initial observation date and an option telling that the data has a time-series structure. The variables which appear in the main window are of the so called 'series' type.
 
 As real GDP is only quarterly observed, we need to transform the monthly UNRATE series to quarterly observations. A standard way to do this is to compute the average of three consecutive months of a specific quarter. This is easily done via the "Data, Compact data" menu or the command
 \begin{verbatim}
 dataset compact 4
 \end{verbatim}
-which reduces the dataset from monthly to quarterly frequency. The resulting quarterly time-series will ranges 1948Q1 to 2018Q2 as indicated at the bottom of the main window.
+which reduces the dataset from monthly to quarterly frequency. The resulting quarterly time-series ranges from 1948Q1 to 2018Q2, as indicated at the bottom of the main window.
 
 The next step involves appending the quarterly real GDP series from another source to the existing dataset. However, when using the \texttt{append} command, we need to make sure that the currently active dataset covers the same time span as the one wished to append (the \texttt{join} command is much more flexible with regard to this). Thus, to avoid an error, we restrict the currently selected sample for the period between 1948Q1 to 2018Q2 by the command
 \begin{verbatim}
 smpl 1948:1 2018:2
 \end{verbatim}
-or through "Sample, Set range" menu using the GUI.
+or through the "Sample, Set range" menu using the GUI.
 
-Appending a file can be done by using the "File, Append data" menu followed by the same request of the 'spreadsheet import' window as already shown in Figure \ref{fig:load}. Gretl automatically recognizes that the appended dataset has the same length as the active one and will add the real GDP series to the dataset. This will finally result in Figure \ref{fig:append}.
+Appending a file can be done by using the "File, Append data" menu followed by the same request of the 'spreadsheet import' window as already shown in Figure \ref{fig:load}. Gretl automatically recognizes that the appended dataset has the same length as the active one and will add the real GDP series to the dataset. This finally results in Figure \ref{fig:append}.
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=.42\textwidth]{../figures/gretl_after_appending}
-	\caption{Joint Time-Series Dataset}
+	\caption{Joined Time-Series Dataset}
 	\label{fig:append}
 \end{figure}
 
-Instead of using the GUI, all previous steps from (down-)loading the data, frequency reduction and appending can be done using a collection of Gretl commands as shown in the Appendix \ref{sec:datapre}.
+Instead of using the GUI, all previous steps starting with (down-)loading the data, over frequency reduction and appending can be done using a collection of Gretl commands as shown in the Appendix \ref{sec:datapre}.
 
 It should be mentioned that Gretl includes many example datasets, some of them taken from popular econometrics textbooks, which is especially useful for teaching purposes. These can be accessed through the "File, Open data, Sample file" menus. Additionally, users can easily download data from some large databases such as DB.NOMICS, quandl.com and yahoo.com:
 \begin{itemize}
@@ -306,11 +306,11 @@ It should be mentioned that Gretl includes many example datasets, some of them t
 		\item Access through the "File, Databases, DB.NOMICS" menu
 		\item See video tutorial on youtube: \url{https://youtu.be/B2KmX9A6ICg}
 	\end{itemize}
-	\item Quandl: \url{quandl.com}
+	\item Quandl: \url{www.quandl.com}
 	\begin{itemize}
 		\item Access through the \texttt{getQuandl} package: \url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/current_fnfiles/getQuandl.gfn}		
 	\end{itemize}
-	\item Yahoo: \url{yahoo.com}
+	\item Yahoo: \url{www.yahoo.com}
 	\begin{itemize}
 		\item Access through the \texttt{yahoo\_get} package: \url{http://ricardo.ecn.wfu.edu/gretl/cgi-bin/current_fnfiles/yahoo_get.gfn}
 	\end{itemize}
@@ -320,7 +320,7 @@ It should be mentioned that Gretl includes many example datasets, some of them t
 
 
 \subsection{Basic Commands}
-The purpose of this section is to introduce some basic commands which are frequently executed when doing data analysis. In the following, we proceed with the dataset compiled in the previous step. Once the data is loaded, one should check its validity. %For printing data values, one can use the \texttt{print} command. However,
+The purpose of this section is to introduce some basic commands which are frequently needed when doing data analysis. In the following, we proceed with the dataset compiled in the previous step. Once the data is loaded, one should check its validity. %For printing data values, one can use the \texttt{print} command. However,
 Initially, we will generate a so called list which can (and should!) be used to make command scripts less verbose and repetitious, and more easily modifiable. In the following, a list named \texttt{L} comprises both variables of interest namely \texttt{UNRATE} and \texttt{GDPC1}. The list is set up by the \texttt{list} command:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 list L = UNRATE GDPC1
@@ -389,39 +389,40 @@ Sometimes one wants to manipulate data entries due to wrong or missing values re
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 UNRATE[1981:2] = 7.4
 \end{Verbatim}
-where \texttt{[1981:2]} refers to a specific index (row) identified by a date-string of variable \texttt{UNRATE}.
+where \texttt{[1981:2]} refers to a specific (row) index identified by a date-string.% of variable \texttt{UNRATE}.
 
 A basic statistics for a bivariate analysis is the correlation coefficient. The correlation coefficient can be easily computed for all pairs of variables in a list by means of the command
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 corr L
 \end{Verbatim}
 which computes Pearson's product-moment correlation. Other types of correlation %such as Spearman's rho (using the option \texttt{---spearman}) and Kendall's tau (using \texttt{---kendall})
-are also available --- just execute \texttt{help corr} in the console for details. The correlation between $UNRATE_t$ and $GDPC1_t$ --- where subscript $ t $ refers to the $ t $-th observation for $ t=1,\ldots, T $ --- is close to zero and is not significantly different from zero in this example:
+are also available --- simply execute \texttt{help corr} in the console for details. The correlation between $UNRATE_t$ and $GDPC1_t$ --- where subscript $ t $ refers to the $ t $-th observation for $ t=1,\ldots, T $ --- is not significantly different from zero in this example as the following output shows:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 corr(UNRATE, GDPC1) = -0.01416004
 Under the null hypothesis of no correlation:
 t(280) = -0.236967, with two-tailed p-value 0.8129
 \end{Verbatim}
 
-An overview about some of the available descriptive statistics are listed in Table \ref{tab:descriptive}.
+An overview about some of the available descriptive statistics and their respective commands or functions %\footnote{With command syntax, you separate inputs with spaces rather than commas, and do not enclose input arguments in parentheses.}
+are listed in Table \ref{tab:descriptive}.
 
 \begin{table}[!h]
 	\centering
 	\footnotesize
 	\begin{tabular}{ll}
 		\hline
-		Command & Description \\ 
+		Function/ Command & Description \\ 
 		\hline 
-		\texttt{min} & Prints the minimum of the series \\
-		\texttt{max} & Prints the maximum of the series \\
-		\texttt{mean} & Prints the mean of the series \\
+		\texttt{min(X)} & Prints the minimum of the series X\\
+		\texttt{max(X)} & Prints the maximum of the series X\\
+		\texttt{mean(X)} & Prints the mean of the series X\\
 		\texttt{median(X)} & Prints the median of the series X \\
-		\texttt{summary} & Prints summary statistics of the series \\
-		\texttt{xtab} & Displays a contingency table or cross-tabulation for series\\ 
-		\texttt{freq} & Prints/ Plots the frequency distribution of the series \\
-		\texttt{corr} & Prints the pairwise correlation coefficients for series\\
-		\texttt{xcorrgm} & Prints and graphs the cross-correlogram between two series \\
-		\texttt{pergm} & Computes and displays the spectrum of the series \\
+		\texttt{summary L} & Prints summary statistics of series in list L\\
+		\texttt{xtab L} & Displays a contingency table or cross-tabulation for elements in list L\\ 
+		\texttt{freq} & Prints/ Plots the frequency distribution of the series X\\
+		\texttt{corr L} & Prints the pairwise correlation coefficients for elements in list L\\
+		\texttt{xcorrgm L} & Prints and graphs the cross-correlogram between two series in list L\\
+		\texttt{pergm X} & Computes and displays the spectrum of the series X\\
 		\hline 
 	\end{tabular}
 	\caption{Examples of Descriptive Statistics in Gretl}
@@ -429,19 +430,20 @@ An overview about some of the available descriptive statistics are listed in Tab
 \end{table}
 
 \subsection{Plotting}
-Visualising data marks an important step in empirical work. Gretl generates graphs by means of the reliable open-source tool gnuplot which is available for many platforms. Gnuplot is a very full-featured graphing program with myriad options (for details see Ch. 6 in the gretl manual). Gretl gives you direct access, via a graphical interface, to a subset of gnuplot’s options and it tries to choose sensible values for you; it also allows you to take complete control over graph details if you wish.
+Visualising data marks an important step in empirical work. Gretl generates graphs by means of the reliable open-source tool gnuplot which is available for many platforms. Gnuplot is a very full-featured graphing program with myriad options (for details see Ch. 6 in the Gretl manual). Gretl gives you direct access, via a graphical interface, to a subset of gnuplot’s options and it tries to choose sensible values for you; it also allows you to take complete control over graph details if you wish.
 
 In a time-series context, an obvious informative graph is the time-series plot which depicts data over time. This is easily done in Gretl by (the backslash allows for line breaks)
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 gnuplot L --with-lines=GDPC1 --with-impulses=UNRATE \
 --time-series --output=display
 \end{Verbatim}
-and the graph can be seen in Figure \ref{fig:TSplot}. We ask \texttt{gnuplot} to plot the variables in list \texttt{L} over time using the \texttt{---time-series} option. Furthermore, we want series GDPC1 being drawn as a line but UNRATE as impulses in this example. The option \texttt{---output=display} returns immediately a plot onto the screen.
+and the graph can be seen in Figure \ref{fig:TSplot}. We ask \texttt{gnuplot} to plot the variables in list \texttt{L} over time using the \texttt{---time-series} option. Furthermore, we want series GDPC1 being drawn as a line but UNRATE as vertical bars ('impulses') in this example. The option \texttt{---output=display} returns immediately a plot onto the screen.
 
-Also scatter-plots serve as standard tools for visualising relationships between variables. A simple scatter-plot between the two series included in list \texttt{L} --- augmented by a linear OLS-based regression fit --- is called by (see Figure \ref{fig:XYplot}):
+Also scatter-plots serve as standard tools for visualising relationships between variables. A simple scatter-plot between the two series included in list \texttt{L} --- augmented by a linear OLS-based regression fit --- is called by the command
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 gnuplot L --fit=linear --output=display
 \end{Verbatim}
+and depicted in Figure \ref{fig:XYplot}. 
 The option \texttt{---output=filename} allows the user to specify a particular output format. Supported output formats are \textit{.eps} (Encapsulated PostScript), \textit{.pdf} (PDF) and \textit{.png} (PNG) among others. For instance, for storing a figure in png-format in a specific directory, use the expression: \\
 \texttt{---output="C:\textbackslash{Project}\textbackslash{Figures}\textbackslash{Fig1}.png"}
 
@@ -457,19 +459,19 @@ The option \texttt{---output=filename} allows the user to specify a particular o
 	\label{fig:Plot1}
 \end{figure}
 
-Another useful type of graph is the Boxplot which summarizes a number of descriptive statistics for the researcher. The \texttt{boxplot} command produces this type of graph. Before showing an example, however, let us generate a new series named \texttt{GreatModeration} which shall be a binary dummy variable taking the value of one for observations between 1985Q1 and 2007Q4, and otherwise zero:
+Another useful type of graph is the boxplot which summarizes a number of descriptive statistics for the researcher. The \texttt{boxplot} command produces this type of graph. Before showing an example, however, generate a new series named \texttt{GreatModeration} which shall be a binary dummy variable taking the value of one for observations between 1985Q1 and 2007Q4, and otherwise zero:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 series GreatModeration = (obs>="1985:1" && obs<="2007:4")
 print GreatModeration --byobs
 \end{Verbatim}
 The ones indicate the well-known Great Moderation period during which business cycle indicators such as GDP growth and price inflation rates followed a rather stable path associated with only small variance around some mean value.
 
-Let us draw the boxplot for the \texttt{UNRATE} series and examine its distribution conditional on the value of the dummy variable \texttt{GreatModeration} by using the \texttt{---factorized} option: 
+Draw the boxplot for the \texttt{UNRATE} series and examine its distribution conditional on the value of the dummy variable \texttt{GreatModeration} by using the \texttt{---factorized} option: 
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 boxplot UNRATE GreatModeration --factorized --output=display \
 { set title 'Distribution of UNRATE outside and during Great Moderation' ; }
 \end{Verbatim}
-Figure \ref{fig:Plot2} shows that the variance of the unemployment rate has indeed been smaller during the Great Moderation phase in the U.S. compared to the remaining period; even though mean and median values have been of comparable magnitude. Note that we added a self-explanatory title to the graph.
+Figure \ref{fig:Plot2} shows that the variance of the unemployment rate has indeed been smaller during the Great Moderation phase in the U.S. compared to the remaining period; even though mean and median values have been of comparable magnitude. Note also that we added a self-explanatory title to the graph.
 
 \begin{figure}[h!]
 	\centering
@@ -482,7 +484,7 @@ Figure \ref{fig:Plot2} shows that the variance of the unemployment rate has inde
 
 
 \section{Let's estimate a dynamic time-series model}
-In this section we want to illustrate how to estimate a dynamic time-series model using Gretl. We will to examine the dynamic relationship between the change in the unemployment rate and growth in aggregate output (as proxied by the Gross Domestic Product). The famous macroeconomist Arthur Melvin Okun formulated a negative relationship between these two variables which has become known as 'Okun's Law'.
+In this section we illustrate how to estimate a dynamic time-series model using Gretl. We will examine the dynamic relationship between the change in the unemployment rate and growth in aggregate output (as proxied by the Gross Domestic Product). The famous macroeconomist Arthur Melvin Okun formulated a negative relationship between these two variables which has become known as 'Okun's Law'. All following steps are documented in the script file \texttt{gretl\_code\_replication.inp} which can be downloaded here: \url{URL}
 
 %\subsection{Generate variables}
 Before estimating the regression model, we need to generate the two variables of interest. The following lines generate two new series objects where \texttt{dU} refers to the period-change in the unemployment rate, $ dU_t = UNRATE_t - UNRATE_{t-1} $, and \texttt{gY} refers to the (exact) period-growth rate of real GDP (in percent), $ gY_t =  100 \times \left( \frac{GDPC_t - GDPC_{t-1}}{GDPC_{t-1}}\right) = 100 \times \left( \frac{GDPC_t}{GDPC_{t-1}}-1 \right)$:
@@ -493,13 +495,13 @@ series gY = 100 * (GDPC1/GDPC1(-1) - 1)
 As can be seen, in a time-series (but also panel) context, Gretl easily handles lags and leads by using an expression such as \texttt{x(p)} where $ p $ generates the $ p $-th lag of series \texttt{x} if $p$  takes a negative and the $ p $-th lead if it takes a positive integer value.
 
 \subsection{The VAR model}
-The vector autoregressive model of order $ p $ (VAR(p)) is a commonly-used tool in macroeconomics. In its most basic incarnation it is written as
+The vector autoregressive model of order $ p $, VAR(p), is a commonly-used tool in macroeconomics. In its most basic incarnation it is written as
 \begin{equation}
 \label{eq:VAR}
 	z_t = \mu + \sum_{i=1}^p \Phi_i z_{t-i} + \varepsilon_t
 \end{equation}
 where $z_t$ is an $k \times 1$-dimensional vector of observable quantities at time $t$, and $ \mu $ is a $k \times 1$-dimensional vector of constants. The autoregressive coefficient matrices, $\Phi_i$, are of size $ k\times k $. In our case, we set $z_t=\left[dU_t, gY_t\right]^\prime$. %The $\mu$ vector and the $\Phi_i$ matrices are unknown and must be estimated from the data.
-$\varepsilon_t$ is an $k$-dimensional vector white noise process with time-invariant, positive definite covariance matrix $ E(\varepsilon_t \varepsilon^\prime_t)=\Sigma_\varepsilon $. The econometrician's job is to estimate the unknown quantities $\mu$, $\Phi_i$ and $ \Sigma_\varepsilon $ from the data so that the model can be used for policy analysis and forecasting.
+$\varepsilon_t$ is a $k$-dimensional vector white noise process with time-invariant, positive definite covariance matrix $ E(\varepsilon_t \varepsilon^\prime_t)=\Sigma_\varepsilon $. The econometrician's job is to estimate the unknown quantities $\mu$, $\Phi_i$ and $ \Sigma_\varepsilon $ from the data so that the model can be used for policy analysis and forecasting.
 
 
 %For illustration, we estimate the following linear autoregressive distributed lag (ARDL(p,q)) model
@@ -518,7 +520,7 @@ smpl 1985:1 2007:4
 
 \subsection{Determination of the optimal lag-order}
 %We restrict the lag-orders $ p $ and $ q $ to be equal --- which of course doesn't actually have to be but simplifies things.
-The unknown optimal finite lag-order $ p $ is determined by means of information criteria (see every good introductory textbook on time-series analysis for details). We use Gretl's built-in \texttt{var} command with the option \texttt{---lagselect} to determine the optimal lag order by setting the maximum lag order to test twice the data frequency (=8 for quarterly data). Gretl will estimate model eq. (\ref{eq:VAR}) (the intercept is automatically added) for eight different lag lengths and compute three standard information criteria for each lag-order. Of course, the user could also use the GUI through the "Model, Time series, Multivariate, VAR lag selection" menu for this.
+The unknown optimal finite lag-order $ p $ is determined by means of information criteria (see every good introductory textbook on time-series analysis for details). We use Gretl's built-in \texttt{var} command with the option \texttt{---lagselect} to determine the optimal lag order by setting the maximum lag order to test twice the data frequency (=8 for quarterly data). Gretl will estimate model eq. (\ref{eq:VAR}) (the intercept is automatically added) for eight different lag lengths and compute three standard information criteria for each lag-order. Of course, the user could also use the GUI through the "Model, Time series, Multivariate, VAR lag selection" menu for doing this.
 
 Again we make use of lists, here named \texttt{ylist}, comprising both variables of interest. The commands and the corresponding output are:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
@@ -539,24 +541,25 @@ lags    loglik    p(LR)       AIC          BIC          HQC
 While the Akaike (AIC) and Hannan–Quinn (HQC) information criteria select the optimal lag-order to be $ p^\ast = 2 $ --- resulting in a VAR(2) model --- the Schwarz (BIC) criteria selects a parsimonious VAR(1) model. We stick to the VAR(2) in the following example but the reader is invited to re-run the analysis for a VAR(1) model.
 
 \subsection{VAR estimation and specification testing}
-Estimating the VAR(2) model by means of OLS can be done by
+Estimating the VAR(2) model by means of OLS can be done by the following command:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 Model <- var 2 ylist	# 'Model <-' constructs a model object
 \end{Verbatim}
 The \texttt{var} command is followed by the lag-order and the separate names of the endogenous variables or, as done here, a list of series. Further exogenous variables as well as deterministics like a linear trend can be added (execute \texttt{help var} in the console for details).
 %The intercept is not included per default but can be added by the \texttt{const} series (the built-in identifier for a constant or y-intercept).
 
-Note the optional expression "\texttt{Model <--}" preceding the actual \texttt{var} command. This expression generates a so called model object (here named "Model") which instantly appears in the icon view (remember Figure \ref{fig:gui_icon}). A double-click on the "Model"-icon opens the "model"-window (see Figure \ref{fig:gui_model}) where the user can proceed with the GUI for evaluating the estimation results, executing various tests, structural analyses, plot several estimation-related graphs such as residuals and fitted values and do forecasting. This underlines the nice implementation of graphical objects which is especially useful for beginners and teaching.
+Note the optional expression "\texttt{Model <--}" preceding the actual \texttt{var} command. This expression generates a so called model object (here named "Model") which instantly appears in the icon view (remember Figure \ref{fig:gui_icon}). A double-click on the "Model"-icon opens the "model"-window (see Figure \ref{fig:gui_model}) where the user can proceed with the GUI for evaluating the estimation results, executing various tests, structural analyses, plot several estimation-related graphs such as residuals and fitted values etc. This underlines the nice implementation of graphical objects which is especially useful for beginners and teaching.
+The well-formatted estimation output covers standard estimation information for each VAR equation.
 
 \begin{figure}[!h]
 	\centering
 	%\includegraphics[width=.72\textwidth]{../figures/gui_model}
 	\includegraphics[width=.42\textwidth]{../figures/gui_var}
-	\caption{Model Window After VAR Model Estimation}
+	\caption{Snapshot Of The Model Window After VAR Model Estimation}
 	\label{fig:gui_model}
 \end{figure}
 
-The well-formatted estimation output covers standard estimation information for each VAR equation.
+
 %Also note the information below the expression "F-tests of zero restrictions:" in the output. For instance, the third line in following output tests the null hypothesis that variable $ gY $ is not Granger-causing variable $ dU $. The null can be rejected at the 1\% significance level (p-value = 0.005):\todo{COuld be droppped}
 %\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 %F-tests of zero restrictions:
@@ -595,28 +598,38 @@ Chi-square(4) = 4.42308 [0.3518]
 
 
 \subsection{Structural analysis}
-Gretl’s built-in \texttt{var} command supports the Cholesky decomposition-based approach, the classic and most popular "Structural VAR" (SVAR) variant. Impulse-response functions can be easily computed through the "Graphs, Impulse responses (combined)" menu in the Model Window. This opens a new window where the user can set some parameters such as the forecast horizon, the width of the confidence interval and the Cholesky ordering (see Figure \ref{fig:irfset}.
-Figure \ref{fig:irfs} depicts the impulse-response results with bootstrap (per default 999 iterations) confidence intervals for each variable combination of the VAR(2) model. Computation is very fast as the underlying code is written in C. In case the user wants to use commands instead of the GUI, the steps can also be done via the command line interface by using the \texttt{---impulse-response} option when executing the \texttt{var} command.
+VAR models are often estimated for doing some kind of structural analysis. Gretl’s built-in \texttt{var} command supports the Cholesky decomposition-based approach, the classic and most popular "Structural VAR" (SVAR) variant. For details see Ch. 29 in the Gretl manual. Impulse-response functions can be easily computed through the "Graphs, Impulse responses (combined)" menu in the Model Window. This opens a new window where the user can set some parameters such as the forecast horizon, the width of the confidence interval and the Cholesky ordering (see Figure \ref{fig:irfset}).
+Figure \ref{fig:irfs} depicts the impulse-response results with bootstrap (per default 999 iterations) confidence intervals for each variable combination of the VAR(2) model. Computation is very fast as the underlying code is written in C. In case the user wants to use commands instead of the GUI, the steps can also be done via the command line interface by using the \texttt{---impulse-response} option when executing the \texttt{var} command:
+\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+var 2 ylist --impulse-responses      # print impulse responses
+\end{Verbatim}
+
 
 \begin{figure}[h!]
 	\centering
 	\subfigure[Settings for Impulse Response Analysis]{\label{fig:irfset}
 		\includegraphics[width=0.3\textwidth]{../figures/gui_setirf}}
-	\subfigure[Results with 90\% bootstrap confidence intervals]{\label{fig:irfs}
+	\subfigure[Results With 90\% Bootstrap Confidence Intervals]{\label{fig:irfs}
 		\includegraphics[width=0.6\textwidth]{../figures/irfs}}
-	\caption{Impulse Response Functions with Bootstrap Confidence Intervals}
+	\caption{Impulse Response Functions Using the GUI}
 	\label{fig:IRF}
 \end{figure}
 
-Another tool, the so called Forecast Error Variance Decomposition, can be called through the Model Window through the "Graphs, Forecast variance decomposition" menu in a similar vein as done for impulse responses, or by the \texttt{---variance-decomp} option when executing the \texttt{var} command. We would also like to emphasize that the presented tools are also available for the "vector error-correction model" (VEC) model framework considering cointegration relationships between non-stationary series. Additionally, more advanced identification methods are included in the Gretl add-on \texttt{SVAR} which can be downloaded through the "Help, Check for addons" menu and which comes with a detailed manual accessible through the console by \texttt{help SVAR}. The SVAR functions can be called through the "Model, Time series, Multivariate, Structural VARs" menu.
+Another popular tool, the so called forecast error variance decomposition, can also be called by means of the Model Window through the "Graphs, Forecast variance decomposition" menu in a similar vein as done for impulse responses, or by the \texttt{---variance-decomp} option when executing the \texttt{var} command:
+\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+var 2 ylist --variance-decomp      # print variance decompositions
+\end{Verbatim}
+
+
+ We would  like to emphasize that the presented tools are also available for the "vector error-correction" (VEC) model framework considering cointegration relationships between non-stationary series. Additionally, more advanced identification methods are included in the Gretl add-on \texttt{SVAR} which can be downloaded through the "Help, Check for addons" menu and which comes with a detailed manual accessible through the console by \texttt{help SVAR}. The SVAR functions can be called through the "Model, Time series, Multivariate, Structural VARs" menu.
 
 \subsection{Out-of-sample forecasting}
-Lastly, given our in-sample based estimates ending in 2007Q4, we want to forecast the dynamics of $ dU_t $ for the following quarters. This is called an out-of-sample forecasting exercise. Again, the user can use the \texttt{fcast} command for scripting or the Model Window GUI for doing this. When using the latter approach, forecast settings can be called through the "Analysis, Forecasts" menu in the Model Window. The settings for the forecast analysis are depicted in Figure \ref{fig:fcset}, and the forecasting results with 95\% intervals are shown in Figure \ref{fig:fc}. Obviously, our VAR(2) has failed to capture the rapid rise in the change in the unemployment rate as a result of the Great Financial Crisis in 2008/9. See Ch. 32.5 in the Gretl manual for details on how VAR-based forecasts are computed.
+Lastly, given our in-sample based estimates ending in 2007Q4, we want to forecast the dynamics of $ dU_t $ for the following quarters. This is called an out-of-sample forecasting exercise. The user can use the \texttt{fcast} command for scripting or the Model Window GUI for doing this. When using the latter approach, forecast settings can be called through the "Analysis, Forecasts" menu in the Model Window. The settings for the forecast analysis are depicted in Figure \ref{fig:fcset}, and the forecasting results with confidence 95\% intervals are shown in Figure \ref{fig:fc}. Obviously, the VAR(2) model has failed to capture the rapid rise in the change in the unemployment rate as a result of the Great Financial Crisis in 2008/9. See Ch. 32.5 in the Gretl manual for details on how VAR-based forecasts are computed.
 
-The \texttt{fcast} command also involves the option to compute basic forecast evaluation statistics, as can be seen when executing:
-\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
-fcast 2008:1 2018:2 --dynamic
-\end{Verbatim}
+%The \texttt{fcast} command also involves the option to compute basic forecast evaluation statistics, as can be seen when executing:
+%\begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
+%fcast 2008:1 2018:2 --dynamic
+%\end{Verbatim}
 
 
 \begin{figure}[h!]
@@ -697,7 +710,7 @@ fcast 2008:1 2018:2 --dynamic
 %Gretl uses the fully-fledged linear algebra library \textit{lapack}.
 Gretl's matrix language has similarity to the syntax of widespread commercial software packages such as MATLAB and GAUSS. The Gretl project allows an easy transfer of series objects to the matrix-world, and \textit{vice versa}. For details on matrix manipulations, matrix algebra, statistics and transformations see Ch. 16 in the Gretl manual.
 
-The following example shows how we could have estimated the VAR(2) model easily by means of standard linear algebra using the solution to the minimization problem underlying standard OLS. The solution is the famous equation $ \hat \beta = (X^\prime X)^{-1} X'y $ where $ y $  is a $ T \times k $ vector of the endogenous, $ [dU_t, gY_t] $, and $ X $ is the $ T \times p*k $ matrix of $ k $ regressors and $ p $ lags (disregarding the intercept vector).
+The following example shows how we could have estimated the VAR(2) model easily by means of standard linear algebra using the solution to the minimization problem underlying standard OLS. The solution is the famous equation $ \hat \beta = (X^\prime X)^{-1} X'y $ where $ y $  is a $ T \times k $ vector of the endogenous, $ [dU, gY] $, and $ X $ is the $ T \times p*k $ matrix of $ k $ regressors and $ p $ lags (for simplicity disregarding the intercept vector).
 
 We declare the two matrix objects \texttt{y} and \texttt{X} by defining the respective matrices. The $ \hat \beta $-matrix, \texttt{bhat}, is easily computed by using the \texttt{inv()} function for computing the inverse of a matrix, and \texttt{'} is a shortcut for the transpose of a matrix (equal to the \texttt{transp()} function). The commands for doing all necessary steps are:
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
@@ -722,7 +735,7 @@ which is exactly the coefficient matrix we have obtained before by the \texttt{v
 \section{Summary}
 Our intent has been to introduce the statistics and econometrics software Gretl and its scripting language Hansl. Gretl handles standard data types for doing data analysis. The language supports commands as well as a fully-fledged programming language. Commands are accessible either via a graphical user interface or a command line. The software includes many functions tailored for statistics and econometrics purposes. Additionally, Gretl's community has programmed and published over 100 additional addons or packages continuously extending its functionalities. These features declare Gretl a serious competitor on the market for statistics and econometrics software which should be considered by students, teachers as well as professionals.
 
-This paper has provided a step-by-step guide ranging from data loading, management and initial analysis over model specification and testing up to model analysis. We have estimated a dynamic vector autoregressive time-series model and shows how easily one can conduct a structural as well as forecasting analysis using Gretl.
+This paper has provided a step-by-step guide ranging from data loading, data management through descriptive statistics over model specification and testing up to model analysis. We have estimated a dynamic vector autoregressive time-series model and have shown how easily one can conduct structural as well as forecasting analyses using Gretl.
 
 We want to mention that Gretl is a continuously developing software. Interested users are asked to post Gretl-related questions, to request features and to report bugs on the Gretl mailings (\url{http://gretl.sourceforge.net/lists.html}). Furthermore, everybody is encouraged to develop user-contributed packages on which an open-source statistics and econometrics software heavily relies on.
 
@@ -890,7 +903,7 @@ ols_ess(price, xlist)
 
 \subsection{Communication with other software packages}
 \label{sec:foreign}
-Gretl support the communication with other popular software packages. Through the so called "foreign mechanism" the user can interpolate into a hansl script a set of statements to be executed by another program, with apparatus available to ferry data between the programs. This facility is supported for Octave, R, Python, Ox, Stata and Julia. This is especially useful to exploit functionality in the "foreign" program that is not currently available in Gretl. For details see ch. 39 to 44 in the Gretl manual.
+Gretl supports the communication with other popular software packages. Through the so called "foreign mechanism" the user can interpolate into a hansl script a set of statements to be executed by another program, with apparatus available to ferry data between the programs. This facility is supported for Octave, R, Python, Ox, Stata and Julia. This is especially useful to exploit functionality in the "foreign" program that is not currently available in Gretl. For details see ch. 39 to 44 in the Gretl manual.
 
 
 \end{document}
