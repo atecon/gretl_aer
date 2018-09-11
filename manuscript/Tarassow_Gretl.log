@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.8)  11 SEP 2018 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.8)  11 SEP 2018 09:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1443,217 +1443,220 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 140.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [3] [4]
-Overfull \hbox (19.65605pt too wide) in paragraph at lines 166--167
-\T1/cmr/m/n/10.95 func-tion pack-ages ([]$\T1/cmtt/m/n/10.95 http : / / ricardo
- . ecn . wfu . edu / gretl / cgi-[]bin / gretldata . cgi ? opt = SHOW _
- []
-
-[5]
-<../figures/gui_main.png, id=158, 461.725pt x 278.03876pt>
+) [3] [4] [5]
+<../figures/gui_main.png, id=162, 461.725pt x 278.03876pt>
 File: ../figures/gui_main.png Graphic file (type png)
 <use ../figures/gui_main.png>
-Package pdftex.def Info: ../figures/gui_main.png  used on input line 190. on in
-put line 190.
+Package pdftex.def Info: ../figures/gui_main.png  used on input line 193. on in
+put line 193.
 Package pdftex.def Info: Requested size: 190.19984pt x 114.53117pt on input lin
-e 190.
-<../figures/gui_cli.png, id=159, 436.63126pt x 269.005pt>
+e 193.
+<../figures/gui_cli.png, id=163, 436.63126pt x 269.005pt>
 File: ../figures/gui_cli.png Graphic file (type png)
 <use ../figures/gui_cli.png>
-Package pdftex.def Info: ../figures/gui_cli.png  used on input line 193. on inp
-ut line 193.
+Package pdftex.def Info: ../figures/gui_cli.png  used on input line 196. on inp
+ut line 196.
 Package pdftex.def Info: Requested size: 185.87292pt x 114.51236pt on input lin
-e 193.
-<../figures/gui_icon.png, id=160, 388.45125pt x 143.53625pt>
+e 196.
+<../figures/gui_icon.png, id=164, 388.45125pt x 143.53625pt>
 File: ../figures/gui_icon.png Graphic file (type png)
 <use ../figures/gui_icon.png>
-Package pdftex.def Info: ../figures/gui_icon.png  used on input line 196. on in
-put line 196.
+Package pdftex.def Info: ../figures/gui_icon.png  used on input line 199. on in
+put line 199.
 Package pdftex.def Info: Requested size: 190.19984pt x 70.2808pt on input line 
-196.
-<../figures/gui_editor.png, id=161, 628.3475pt x 229.85875pt>
+199.
+<../figures/gui_editor.png, id=165, 628.3475pt x 229.85875pt>
 File: ../figures/gui_editor.png Graphic file (type png)
 <use ../figures/gui_editor.png>
-Package pdftex.def Info: ../figures/gui_editor.png  used on input line 199. on 
-input line 199.
+Package pdftex.def Info: ../figures/gui_editor.png  used on input line 202. on 
+input line 202.
 Package pdftex.def Info: Requested size: 190.19984pt x 69.57544pt on input line
- 199.
+ 202.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [6] [7 <../figures/gui_main.png> <../figures/gui_cli.png> <../figures/gui_icon.
 png> <../figures/gui_editor.png>]
-<../figures/data_spreadsheet.png, id=186, 712.6625pt x 326.21875pt>
+<../figures/data_spreadsheet.png, id=190, 712.6625pt x 326.21875pt>
 File: ../figures/data_spreadsheet.png Graphic file (type png)
 <use ../figures/data_spreadsheet.png>
 Package pdftex.def Info: ../figures/data_spreadsheet.png  used on input line 23
-4. on input line 234.
+7. on input line 237.
 Package pdftex.def Info: Requested size: 259.36462pt x 118.7229pt on input line
- 234.
+ 237.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [8 <../figures/data_spreadsheet.png>]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 260.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 262.
 
-Overfull \hbox (1.47485pt too wide) in paragraph at lines 260--261
+Overfull \hbox (1.47485pt too wide) in paragraph at lines 262--263
 []\T1/cmr/m/n/10.95 data_unrate.xls: []$\T1/cmtt/m/n/10.95 https : / / scm . da
 rnold . org / atecon / gretl _ aer / raw / master / data _
  []
 
 
-Overfull \hbox (10.79881pt too wide) in paragraph at lines 261--262
+Overfull \hbox (10.79881pt too wide) in paragraph at lines 263--264
 []\T1/cmr/m/n/10.95 data_gdp.xls: []$\T1/cmtt/m/n/10.95 https : / / scm . darno
 ld . org / atecon / gretl _ aer / raw / master / data _ gdp .
  []
 
-<../figures/open_file.png, id=200, 463.7325pt x 353.32pt>
+<../figures/open_file.png, id=204, 463.7325pt x 353.32pt>
 File: ../figures/open_file.png Graphic file (type png)
 <use ../figures/open_file.png>
-Package pdftex.def Info: ../figures/open_file.png  used on input line 268. on i
-nput line 268.
+Package pdftex.def Info: ../figures/open_file.png  used on input line 271. on i
+nput line 271.
 Package pdftex.def Info: Requested size: 181.5526pt x 138.32797pt on input line
- 268.
+ 271.
 [9 <../figures/open_file.png>]
-<../figures/gretl_after_appending.png, id=211, 460.72125pt x 311.1625pt>
+<../figures/gretl_after_appending.png, id=215, 460.72125pt x 311.1625pt>
 File: ../figures/gretl_after_appending.png Graphic file (type png)
 <use ../figures/gretl_after_appending.png>
 Package pdftex.def Info: ../figures/gretl_after_appending.png  used on input li
-ne 295. on input line 295.
+ne 298. on input line 298.
 Package pdftex.def Info: Requested size: 181.5526pt x 122.61584pt on input line
- 295.
+ 298.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [10] [11 <../figures/gretl_after_appending.png>] [12]
-<../figures/smpl_restrict.png, id=236, 406.51875pt x 56.21pt>
+<../figures/smpl_restrict.png, id=240, 406.51875pt x 56.21pt>
 File: ../figures/smpl_restrict.png Graphic file (type png)
 <use ../figures/smpl_restrict.png>
-Package pdftex.def Info: ../figures/smpl_restrict.png  used on input line 383. 
-on input line 383.
+Package pdftex.def Info: ../figures/smpl_restrict.png  used on input line 386. 
+on input line 386.
 Package pdftex.def Info: Requested size: 181.5526pt x 25.103pt on input line 38
-3.
- [13 <../figures/smpl_restrict.png>] [14]
-<../figures/TSplot.png, id=256, 546.04pt x 321.2pt>
-File: ../figures/TSplot.png Graphic file (type png)
-<use ../figures/TSplot.png>
-Package pdftex.def Info: ../figures/TSplot.png  used on input line 453. on inpu
-t line 453.
-Package pdftex.def Info: Requested size: 190.19984pt x 111.88255pt on input lin
-e 453.
-<../figures/XYplot.png, id=257, 513.92pt x 385.44pt>
-File: ../figures/XYplot.png Graphic file (type png)
-<use ../figures/XYplot.png>
-Package pdftex.def Info: ../figures/XYplot.png  used on input line 456. on inpu
-t line 456.
-Package pdftex.def Info: Requested size: 190.19984pt x 142.65173pt on input lin
-e 456.
- [15 <../figures/TSplot.png> <../figures/XYplot.png>]
-<../figures/BOXplot.png, id=266, 513.92pt x 385.44pt>
-File: ../figures/BOXplot.png Graphic file (type png)
-<use ../figures/BOXplot.png>
-Package pdftex.def Info: ../figures/BOXplot.png  used on input line 479. on inp
-ut line 479.
-Package pdftex.def Info: Requested size: 190.19984pt x 142.65173pt on input lin
-e 479.
- [16 <../figures/BOXplot.png>] [17]
-<../figures/gui_var.png, id=284, 521.95pt x 583.17876pt>
-File: ../figures/gui_var.png Graphic file (type png)
-<use ../figures/gui_var.png>
-Package pdftex.def Info: ../figures/gui_var.png  used on input line 557. on inp
-ut line 557.
-Package pdftex.def Info: Requested size: 181.5526pt x 202.85202pt on input line
- 557.
+6.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18] [19 <../figures/gui_var.png>]
-<../figures/gui_setirf.png, id=297, 325.215pt x 411.5375pt>
+[13 <../figures/smpl_restrict.png>] [14]
+<../figures/TSplot.png, id=261, 546.04pt x 321.2pt>
+File: ../figures/TSplot.png Graphic file (type png)
+<use ../figures/TSplot.png>
+Package pdftex.def Info: ../figures/TSplot.png  used on input line 456. on inpu
+t line 456.
+Package pdftex.def Info: Requested size: 190.19984pt x 111.88255pt on input lin
+e 456.
+<../figures/XYplot.png, id=262, 513.92pt x 385.44pt>
+File: ../figures/XYplot.png Graphic file (type png)
+<use ../figures/XYplot.png>
+Package pdftex.def Info: ../figures/XYplot.png  used on input line 459. on inpu
+t line 459.
+Package pdftex.def Info: Requested size: 190.19984pt x 142.65173pt on input lin
+e 459.
+<../figures/BOXplot.png, id=264, 513.92pt x 385.44pt>
+File: ../figures/BOXplot.png Graphic file (type png)
+<use ../figures/BOXplot.png>
+Package pdftex.def Info: ../figures/BOXplot.png  used on input line 481. on inp
+ut line 481.
+Package pdftex.def Info: Requested size: 190.19984pt x 142.65173pt on input lin
+e 481.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15 <../figures/TSplot.png> <../figures/XYplot.png>] [16 <../figures/BOXplot.pn
+g>] [17]
+<../figures/gui_var.png, id=290, 521.95pt x 583.17876pt>
+File: ../figures/gui_var.png Graphic file (type png)
+<use ../figures/gui_var.png>
+Package pdftex.def Info: ../figures/gui_var.png  used on input line 559. on inp
+ut line 559.
+Package pdftex.def Info: Requested size: 181.5526pt x 202.85202pt on input line
+ 559.
+ [18] [19 <../figures/gui_var.png>]
+<../figures/gui_setirf.png, id=303, 325.215pt x 411.5375pt>
 File: ../figures/gui_setirf.png Graphic file (type png)
 <use ../figures/gui_setirf.png>
-Package pdftex.def Info: ../figures/gui_setirf.png  used on input line 611. on 
-input line 611.
+Package pdftex.def Info: ../figures/gui_setirf.png  used on input line 614. on 
+input line 614.
 Package pdftex.def Info: Requested size: 129.68231pt x 164.10971pt on input lin
-e 611.
+e 614.
 
-Underfull \hbox (badness 4752) in paragraph at lines 611--611
+Underfull \hbox (badness 4752) in paragraph at lines 614--614
 []\T1/cmr/m/n/9 (a) Set-tings for Im-pulse Re-
  []
 
-<../figures/irfs.pdf, id=298, pagebox=cropbox, 361.35pt x 252.945pt>
+<../figures/irfs.pdf, id=304, pagebox=cropbox, 361.35pt x 252.945pt>
 File: ../figures/irfs.pdf Graphic file (type pdf)
 <use ../figures/irfs.pdf>
-Package pdftex.def Info: ../figures/irfs.pdf  used on input line 613. on input 
-line 613.
+Package pdftex.def Info: ../figures/irfs.pdf  used on input line 616. on input 
+line 616.
 Package pdftex.def Info: Requested size: 259.36462pt x 181.55675pt on input lin
-e 613.
+e 616.
 [20 <../figures/gui_setirf.png> <../figures/irfs.pdf>]
-<../figures/gui_setfc.png, id=317, 462.72874pt x 323.2075pt>
+<../figures/gui_setfc.png, id=323, 462.72874pt x 323.2075pt>
 File: ../figures/gui_setfc.png Graphic file (type png)
 <use ../figures/gui_setfc.png>
-Package pdftex.def Info: ../figures/gui_setfc.png  used on input line 638. on i
-nput line 638.
+Package pdftex.def Info: ../figures/gui_setfc.png  used on input line 641. on i
+nput line 641.
 Package pdftex.def Info: Requested size: 177.23227pt x 123.79167pt on input lin
-e 638.
-<../figures/fcvar.pdf, id=318, pagebox=cropbox, 361.35pt x 252.945pt>
+e 641.
+<../figures/fcvar.pdf, id=324, pagebox=cropbox, 361.35pt x 252.945pt>
 File: ../figures/fcvar.pdf Graphic file (type pdf)
 <use ../figures/fcvar.pdf>
-Package pdftex.def Info: ../figures/fcvar.pdf  used on input line 640. on input
- line 640.
+Package pdftex.def Info: ../figures/fcvar.pdf  used on input line 643. on input
+ line 643.
 Package pdftex.def Info: Requested size: 190.19984pt x 133.14162pt on input lin
-e 640.
- [21 <../figures/gui_setfc.png> <../figures/fcvar.pdf>] [22] (./Tarassow_Gretl.
-bbl) [23] [24] [25]
-[26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 909.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 909.
+e 643.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21] [22 <../figures/gui_setfc.png> <../figures/fcvar.pdf>]
+(./Tarassow_Gretl.bbl) [23] [24] [25] [26]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 914.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 914.
  (./Tarassow_Gretl.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 909.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 909.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 914.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 914.
 Package rerunfilecheck Info: File `Tarassow_Gretl.out' has not changed.
-(rerunfilecheck)             Checksum: F490D882FE66F4A369ABB35B0F18083E;1627.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 909.
+(rerunfilecheck)             Checksum: 4FA1165D8220E5E825D8F07A42087F42;1605.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 914.
  ) 
 Here is how much of TeX's memory you used:
- 27695 strings out of 494765
- 511257 string characters out of 6175895
- 654636 words of memory out of 5000000
- 30454 multiletter control sequences out of 15000+600000
+ 27699 strings out of 494765
+ 511302 string characters out of 6175895
+ 654823 words of memory out of 5000000
+ 30457 multiletter control sequences out of 15000+600000
  555825 words of font info for 90 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  62i,11n,56p,10391b,521s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk>
  </home/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> <
-/home/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </h
-ome/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </hom
-e/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/
-at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/at
-/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/at/.
-texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/at/.te
-xlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/at/.texl
-ive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/at/.texliv
-e2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/at/.texlive2
-017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/at/.texlive201
-7/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Tarassow_Gretl.pdf (26 pages, 610861 bytes).
+/home/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </h
+ome/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </hom
+e/at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/
+at/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/at
+/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/at/.
+texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/at/.te
+xlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/at/.texl
+ive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/at/.texliv
+e2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/at/.texlive2
+017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/at/.texlive201
+7/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/at/.texlive2017/
+texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/at/.texlive2017/te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Tarassow_Gretl.pdf (26 pages, 613230 bytes).
 PDF statistics:
- 1013 PDF objects out of 1200 (max. 8388607)
- 400 compressed objects within 4 object streams
- 88 named destinations out of 1000 (max. 500000)
+ 1032 PDF objects out of 1200 (max. 8388607)
+ 412 compressed objects within 5 object streams
+ 89 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

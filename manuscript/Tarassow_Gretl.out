@@ -1,19 +1,19 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Econometric Software and Gretl}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{The 'Market' of econometrics software}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.1}{The 'Market' of Econometrics Software}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Gretl and Hansl}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Getting Started in Gretl}{}% 5
 \BOOKMARK [2][-]{subsection.3.1}{The Graphical User Interface}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Loading and Appending Data}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{Basic Commands}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.4}{Plotting}{section.3}% 9
-\BOOKMARK [1][-]{section.4}{Let's estimate a dynamic time-series model}{}% 10
-\BOOKMARK [2][-]{subsection.4.1}{The VAR model}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.2}{Determination of the optimal lag-order}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.3}{VAR estimation and specification testing}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.4}{Structural analysis}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.5}{Out-of-sample forecasting}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Working with matrices}{}% 16
+\BOOKMARK [2][-]{subsection.3.4}{Data Visualisation}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{A Dynamic Time-Series Model}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{The VAR Model}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{The Optimal Lag-Order}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{VAR Estimation and Specification Testing}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.4}{Structural Analysis}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.5}{Out-of-Sample Forecasting}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Working With Matrices}{}% 16
 \BOOKMARK [1][-]{section.6}{Summary}{}% 17
 \BOOKMARK [1][-]{section.6}{REFERENCES}{}% 18
 \BOOKMARK [1][-]{appendix.A}{Appendix}{}% 19
@@ -21,4 +21,4 @@
 \BOOKMARK [2][-]{subsection.A.2}{Add-ons and Contributed Packages}{appendix.A}% 21
 \BOOKMARK [2][-]{subsection.A.3}{Loops}{appendix.A}% 22
 \BOOKMARK [2][-]{subsection.A.4}{Functions}{appendix.A}% 23
-\BOOKMARK [2][-]{subsection.A.5}{Communication with other software packages}{appendix.A}% 24
+\BOOKMARK [2][-]{subsection.A.5}{Communication With Other Software Packages}{appendix.A}% 24
