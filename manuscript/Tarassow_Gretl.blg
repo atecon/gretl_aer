@@ -2,12 +2,12 @@ This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Tarassow_Gretl.aux
 The style file: apalike.bst
-Database file #1: ../../../UHHDisk/05_Literatur_DATENBANK/library.bib.bib
-Warning--there's a number but no series in Adkins2014
-Warning--empty publisher in Adkins2014
+Database file #1: library.bib.bib
+Warning--there's a number but no series in Adkins2018
+Warning--empty publisher in Adkins2018
 You've used 2 entries,
             1935 wiz_defined-function locations,
-            488 strings with 4047 characters,
+            488 strings with 4007 characters,
 and the built_in function-call counts, 817 in all, are:
 = -- 85
 > -- 14

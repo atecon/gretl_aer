@@ -79,10 +79,10 @@
 \if0\blind
 {
 	\title{\bf Practical Empirical Research Using Gretl and Hansl}
-	%\title{\bf Improved Monetary Forecasts by Means of Economic Uncertainty Measures and Regularisation Techniques}
 	\author{Artur Tarassow\thanks{
-			I am grateful to Allin Cottrell, Riccardo (Jack) Lucchetti and Sven Schreiber for helpful comments. Any remaining errors or omissions are strictly our own.}\hspace{.2cm}\\
+			\scriptsize Address for correspondence:\  A.\ Tarassow, Department of Socioeconomics, Welckerstr. 8, University of Hamburg, 20354 Hamburg, Germany. Email:\ atecon@cryptolab.net. I am grateful to Allin Cottrell, Riccardo (Jack) Lucchetti, Sven Schreiber and Jenny Lye for helpful comments. Any remaining errors or omissions are strictly my own. I gratefully acknowledge financial support from the Graduate School at the University of Hamburg and the hospitality of the University of Melbourne during a visit in March 2017.}\hspace{.2cm}\\
 		Department of Socioeconomics, University of Hamburg}
+	\date{}
 	\maketitle
 } \fi
 
@@ -97,14 +97,15 @@
 	\medskip
 } \fi
 
+
 \bigskip
 \begin{abstract}
-	\noindent This article provides an introduction to the free open-source statistics and econometrics software Gretl. The software is an attempt to bridge the different demands for teaching at different levels. Furthermore, it also provides functionalities required for professional work. We also introduce Gretl's powerful and intuitive scripting language "Hansl". This article can be seen as a step-by-step guide from the scratch through a real-life data analysis example. Finally, we estimate a vector autoregressive time-series model using Gretl for structural analyses as well as for forecasting purposes.
+	\noindent This article provides an introduction to the free open-source statistics and econometrics software Gretl. The software is an attempt to bridge the different demands for teaching at different levels. Furthermore, it also provides functionalities required for professional work. We also introduce Gretl's powerful and intuitive scripting language "Hansl". This article can be seen as a step-by-step guide illustrated using a real-life data analysis example. Finally, we estimate a vector autoregressive time-series model using Gretl for structural analyses as well as for forecasting purposes.
 \end{abstract}
 
-%\noindent%
-%{\it Keywords:} XXX, XXX\\
-%{\it JEL:} XXX; XXX
+\noindent%
+{\it Keywords:} Gretl, Hansl, econometrics, data management, data visualisation, least squares, vector autoregressive time-series \\
+{\it JEL:} C1, C5, C6, C8
 
 \vfill
 
@@ -115,7 +116,7 @@
 \newpage
 \section{Introduction}
 \label{sec:intro}
-Data analysis is a vital part of the economic training and of a professional economist's daily life. Economists are trained to be sophisticated users of data, and econometrics --- the interplay of economic theory, statistics and mathematics --- is a subject which usually economics students have to attend. %A typical economics degree program comprises subjects on data management, statistics, model simulation and estimation.
+Data analysis is a vital part of the economic training and of a professional economist's daily life. Economists are trained to be sophisticated users of data, and econometrics --- the interplay of economic theory, statistics and mathematics --- is a subject which usually economics students have to study. %A typical economics degree program comprises subjects on data management, statistics, model simulation and estimation.
 Undergraduates studying economics are typically exposed to courses in statistics and econometrics, covering the practice and interpretation of least-squares regression, data management and data visualisation. Graduate students learn the advanced treatments of the subject, likely involving Maximum Likelihood estimation, simulation and so on. Professional economists --- whether in public or private institutions --- are likely to find themselves using, or possibly developing, econometric methods.
 
 Gretl is an open-source and freely available statistics and econometrics software attempting to bridge the various demands for teaching at different levels as well as for professional work. It comprises a full-featured graphical interface but also a powerful scripting language called Hansl. This scripting language can be seen as a domain-specific language for statistics and econometrics. Gretl handles datasets --- a matrix but with a richer structure including some meta-information %information on the data type, eventual calendar date and recorded data frequency 
@@ -134,7 +135,7 @@ Gretl is a program which attempts to bridge these different demands. It comprise
 functionality can be driven either by Gretl's scripting language or by the apparatus of menus, dialogue boxes and so on. The lead developers --- Allin Cottrell from Wake Forest University and Riccardo (Jack) Lucchetti from Università Politecnica delle Marche --- try to ensure that almost everything that can be done via scripting can also be done via the GUI, and vice versa, with only few exceptions \citep{Cottrell2017}.
 
 Gretl's main competitors are the major proprietary econometrics packages, Stata and Eviews, and also the major open-source statistical software project, R. As in Gretl, datasets and series are also basic in Stata and Eviews, and econometric functionality is supported by a wide range of built-in commands. Even though both Stata and Eviews support scripting, their respective languages are quite odd from the point of view of a programmer used to general-purpose scripting languages or Matlab-like interfaces for matrix manipulation. %\remph{One cannot define a function as such in either Stata or Eviews.}
-Gretl offers the common apparatus of fully-fledged programming languages (function-calling, function-definition, declaration of and assignment to named variables of various types) similar of what is known from Matlab, R and Python.
+Gretl offers the common apparatus of fully-fledged programming languages (function-calling, function-definition, declaration of and assignment to named variables of various types) similar to what is available in Matlab, R and Python.
 
 \subsection{Gretl and Hansl}
 Gretl is an acronym for \textbf{G}nu \textbf{R}egression, \textbf{E}conometrics and \textbf{T}ime-series \textbf{L}ibrary. The software is available for Windows, Mac OS X as well as Linux through the official Gretl homepage: \url{http://gretl.sourceforge.net/}. It is free, open-source software which may be redistributed and/or modified under the terms of the GNU General Public License as published by the Free Software Foundation.
@@ -205,7 +206,7 @@ The icon view window (see Figure \ref{fig:gui_icon}) comprises the access to dif
 \end{figure}
 
 
-Lee Adkin's (\citeyear{Adkins2014}) terrific and freely available econometrics book \emph{Using gretl for Principles of Econometrics} provides a much deeper introduction, and is highly recommended for learning and mastering Gretl (4th edition downloadable here: \\ \url{www.learneconometrics.com/gretl/using_gretl_for_POE4.pdf}; the 5th edition will be published online very soon!). Also the Gretl manual, which can be opened from the "Help, User's guide" menu, is the first source one should check in case of questions or problems.
+Lee Adkin's (\citeyear{Adkins2018}) terrific and freely available econometrics book \emph{Using gretl for Principles of Econometrics} provides a much deeper introduction, and is highly recommended for learning and mastering Gretl (5th edition downloadable here: \\ \url{http://www.learneconometrics.com/gretl/poe5/using_gretl_for_POE5.pdf}). Also the Gretl manual, which can be opened from the "Help, User's guide" menu, is the first source one should check in case of questions or problems.
 
 
 
@@ -227,7 +228,7 @@ new data for conformability with the existing dataset and, if everything seems O
 Once data is read-in, it may be necessary to supply some information on the type of the dataset. The three types that can be distinguished are cross-section, time-series and panel data. The primary tool for doing this is the "Data, Dataset structure" menu entry in the GUI, or the \texttt{setobs} command when using scripts or the console.
 
 In our real-world example, we deal with two macroeconomic time-series downloaded from the St, Louis Federal Reserve Bank database called FRED. % (\url{https://fred.stlouisfed.org/}).
-The first series is real GDP of the U.S. economy for which data values are collected at a quarterly frequency since 1948 (\url{https://fred.stlouisfed.org/series/GDPC}). The second series refers to the civilian unemployment rate observed at monthly frequency since 1948 (\url{https://fred.stlouisfed.org/series/UNRATE}).
+The first series is real GDP of the U.S. economy for which data values are collected at a quarterly frequency since 1948 (\url{https://fred.stlouisfed.org/series/GDPC1}). The second series refers to the civilian unemployment rate observed at monthly frequency since 1948 (\url{https://fred.stlouisfed.org/series/UNRATE}).
 
 The two separate spreadsheets look as depicted in Figure \ref{fig:spread} with basic information on data characteristics reported in Table \ref{tab:datainfo}. The two files are stored online to allow the replication of the following example.
 
@@ -372,7 +373,7 @@ One can also restrict the underlying sample in a more complicated way. For insta
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 smpl UNRATE>4 && UNRATE <= 9.6 --restrict --replace
 \end{Verbatim}
-would restrict the selected dataset to observations which fulfil the criteria that \texttt{UNRATE} is greater 4 but equal or less than 9.6, and replace any eventual previous restrictions imposed by the \texttt{---replace} option. %\footnote{An overview about logical operators can be found in Table \ref{tab:logic} in the Appendix.}
+would restrict the selected dataset to observations which fulfil the criteria that \texttt{UNRATE} is greater than 4 but equal or less than 9.6, and replace any eventual previous restrictions imposed by the \texttt{---replace} option. %\footnote{An overview about logical operators can be found in Table \ref{tab:logic} in the Appendix.}
 The user will be informed that the currently selected sample includes only 237 out of all 282 valid observations, as depicted in Figure \ref{fig:smpl}. The information that the restricted sample is "undated" states that due to the restrictions imposed, the time-series structure of consecutive observations has been broken. The original full sample with a time-series structure can be restored by the
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 smpl full
@@ -387,7 +388,7 @@ command.
 	\label{fig:smpl}
 \end{figure}
 
-Sometimes one wants to manipulate data entries due to wrong or missing values recorded. Let us assume that variable \texttt{UNRATE} includes a missing value for observation 1981Q2 but you know that the U.S. unemployment rate has been 7.4 \% for this observation. Replacing a valid value or a missing value for a specific observation can be simply done by the command
+Sometimes one wants to manipulate data entries due to wrong or missing values recorded. Let us assume that variable \texttt{UNRATE} includes a missing value for observation 1981Q2 but you know that the U.S. unemployment rate was 7.4 \% for this observation. Replacing a valid value or a missing value for a specific observation can be simply done by the command
 \begin{Verbatim}[baselinestretch=0.75, fontsize=\small]
 UNRATE[1981:2] = 7.4
 \end{Verbatim}
@@ -710,7 +711,7 @@ Lastly, given the in-sample based estimates ending in 2007Q4, we want to forecas
 
 \section{Working With Matrices}
 %Gretl uses the fully-fledged linear algebra library \textit{lapack}.
-Gretl's matrix language has similarity to the syntax of widespread commercial software packages such as MATLAB and GAUSS. The Gretl project allows an easy transfer of series objects to the matrix-world, and \textit{vice versa}. For details on matrix manipulations, matrix algebra, statistics and transformations see Ch. 16 in the Gretl manual.
+Gretl's matrix language is similar to the syntax of widespread commercial software packages such as MATLAB and GAUSS. The Gretl project allows an easy transfer of series objects to the matrix-world, and \textit{vice versa}. For details on matrix manipulations, matrix algebra, statistics and transformations see Ch. 16 in the Gretl manual.
 
 The following example shows how we could have estimated the VAR(2) model easily by means of standard linear algebra using the solution to the minimization problem underlying standard OLS. The solution is the famous equation $ \hat \beta = (X^\prime X)^{-1} X'y $ where $ y $  is a $ T \times k $ vector of the endogenous, $ [dU, gY] $, and $ X $ is the $ T \times p*k $ matrix of $ k $ regressors and $ p $ lags (for simplicity disregarding the intercept vector).
 
@@ -753,7 +754,7 @@ We want to mention that Gretl is a continuously developing software. Interested 
 \bibliographystyle{apalike} % chicago, apalike, aes
 
 % Local folder path
-\bibliography{../../../UHHDisk/05_Literatur_DATENBANK/library.bib}
+\bibliography{library.bib}
 
 \newpage
 
