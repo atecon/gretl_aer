@@ -7,3 +7,4 @@
   (1) manuscript in tex- and pdf-format,
   (2) including figures and the data file,
   (3) and a **gretl** replication file `gretl_code_replication.inp`
+- All final files are stored in `Tarassow_Gretl_Paper.zip`
